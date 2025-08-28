@@ -1,0 +1,106 @@
+@use './variables.scss' as *;
+
+@mixin flex($f, $w, $a, $j, $g: 0) {
+  display: flex;
+  flex-flow: $f $w;
+  align-items: $a;
+  justify-content: $j;
+  gap: $g;
+}
+
+@mixin fcc($w: nowrap, $g: 0) {
+  display: flex;
+  flex-flow: column $w;
+  align-items: center;
+  justify-content: center;
+  gap: $g;
+}
+
+@mixin frc($w: nowrap, $g: 0) {
+  display: flex;
+  flex-flow: row $w;
+  align-items: center;
+  justify-content: center;
+  gap: $g;
+}
+
+// flex row, to left
+@mixin frl($w: nowrap, $a: center, $g: 0) {
+  display: flex;
+  flex-flow: row $w;
+  align-items: $a;
+  justify-content: flex-start;
+  gap: $g;
+}
+
+// flex row, to right
+@mixin frr($w: nowrap, $a: center, $g: 0) {
+  display: flex;
+  flex-flow: row $w;
+  align-items: $a;
+  justify-content: flex-end;
+  gap: $g;
+}
+
+// flex row, space-between
+@mixin frs($w: nowrap, $a: center) {
+  display: flex;
+  flex-flow: row $w;
+  align-items: $a;
+  justify-content: space-between;
+}
+
+// flex column, space-between
+@mixin fcs($w: nowrap, $a: center) {
+  display: flex;
+  flex-flow: column $w;
+  align-items: $a;
+  justify-content: space-between;
+}
+
+@mixin grid($w, $cg, $rg, $f: 1fr) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($w, $f));
+  column-gap: $cg;
+  row-gap: $rg;
+}
+
+// r 表示 repeat
+@mixin grid-r($n, $cg, $rg, $f: 1fr) {
+  display: grid;
+  grid-template-columns: repeat($n, $f);
+  column-gap: $cg;
+  row-gap: $rg;
+}
+
+@mixin no-select() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin RWDMAX($w) {
+  @media only screen and (max-width: $w) {
+    @content;
+  }
+}
+
+@mixin RWDMIN($w) {
+  @media only screen and (min-width: $w) {
+    @content;
+  }
+}
+
+@mixin RWD($w1, $w2) {
+  @media screen and (min-width: $w1) and (max-width: $w2) {
+    @content;
+  }
+}
+
+@mixin glass($bgc, $blur: 5px) {
+  background-color: $bgc;
+  box-shadow: 0 0 5px 0 $black-t2;
+  backdrop-filter: blur($blur);
+}
