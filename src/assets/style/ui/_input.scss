@@ -1,0 +1,45 @@
+@use '../variables.scss' as *;
+@use '../mixin.scss' as *;
+
+.input-label-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid $gray-400;
+  transition: all 400ms ease;
+
+  span {
+    @include no-select;
+    position: absolute;
+    letter-spacing: 1px;
+  }
+
+  span.label-name {
+    top: 16px;
+    left: 20px;
+    color: $gray-400;
+    pointer-events: none;
+    transition: all 400ms ease;
+  }
+
+  input {
+    width: 100%;
+    outline: none;
+    padding: 10px 20px;
+    line-height: 30px;
+    color: $white;
+    border: 0;
+    background-color: $transparent;
+  }
+
+  &:focus-within,
+  &.has-value {
+    border-bottom: 1px solid $gold-400;
+
+    span.label-name {
+      color: $gold-500;
+      top: -25px;
+      left: 0;
+    }
+  }
+}

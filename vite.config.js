@@ -31,13 +31,12 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
-import tailwindcss from '@tailwindcss/vite'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 export default defineConfig({
-  plugins: [eslint(), react(), tailwindcss()],
+  plugins: [eslint(), react()],
   base: '/', // 部署時視需求修改
   resolve: {
     alias: {

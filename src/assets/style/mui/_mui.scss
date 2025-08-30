@@ -1,0 +1,28 @@
+@use '../variables.scss' as *;
+@use '../mixin.scss' as *;
+
+.MuiInput-root {
+  .MuiInput-input {
+    color: $gold-500;
+  }
+
+  &.MuiInput-underline {
+    transition: all 500ms ease !important;
+  }
+
+  /* 預設底線顏色 */
+  &.MuiInput-underline:before {
+    border-bottom: 1px solid $white-60 !important;
+    transition: all 600ms ease !important;
+  }
+
+  /* hover 底線 */
+  &.MuiInput-underline:hover:not(.Mui-disabled, .Mui-error):before {
+    border-bottom: 1px solid $white !important;
+  }
+
+  /* 聚焦時的底線顏色 */
+  &.MuiInput-underline:after {
+    border-bottom: 2px solid $gold-500 !important;
+  }
+}

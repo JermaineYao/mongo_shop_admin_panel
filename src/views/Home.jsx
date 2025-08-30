@@ -1,16 +1,33 @@
-// import TextField from '@mui/material/TextField'
-import { Input } from '@mui/material'
+import { useState } from 'react'
 
-// logo component
 import Logo from '@comp/Logo'
+import SignIn from '@comp/home/SignIn'
+import ForgotPwd from '@comp/home/ForgotPwd'
 
 export default function Home() {
-  return (
-    <div className="page">
-      <Logo large={true}></Logo>
+  const [forgotPwd, setForgotPwd] = useState(false)
 
-      {/* <TextField></TextField> */}
-      <Input></Input>
+  function toForgotPwd() {
+    setForgotPwd(true)
+  }
+
+  function toSignIn() {
+    setForgotPwd(false)
+  }
+
+  return (
+    <div id="home" className="page">
+      <div className="home-container">
+        <Logo large={true}></Logo>
+
+        <div className={`page-show ${!forgotPwd ? 'active' : ''}`}>
+          <SignIn toForgotPwd={toForgotPwd}></SignIn>
+        </div>
+
+        <div className={`page-show ${forgotPwd ? 'active' : ''}`}>
+          <ForgotPwd toSignIn={toSignIn}></ForgotPwd>
+        </div>
+      </div>
     </div>
   )
 }

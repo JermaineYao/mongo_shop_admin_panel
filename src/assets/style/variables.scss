@@ -1,2 +1,67 @@
-$light-blue: rgb(99, 119, 145);
-$deep-purple: rgba(24, 0, 44, 1);
+/*======== Colors ========*/
+// Brand
+$brand-primary-900: rgba(24, 0, 44, 1);
+$brand-primary-700: rgba(18, 0, 59, 0.7);
+$brand-primary-500: rgba(24, 0, 44, 0.5);
+
+$brand-gray-600: rgb(99, 119, 145);
+
+// Neutral/Gray
+$gray-400: rgba(189, 192, 186, 1);
+$gray-500: rgba(182, 182, 182, 1);
+
+// Black/White
+$black: rgba(0, 0, 0, 1);
+$black-20: rgba(0, 0, 0, 0.2);
+$black-60: rgba(0, 0, 0, 0.6);
+
+$white: rgba(255, 255, 255, 1);
+$white-15: rgba(255, 255, 255, 0.15);
+$white-30: rgba(255, 255, 255, 0.3);
+$white-60: rgba(255, 255, 255, 0.6);
+
+$transparent: rgba(0, 0, 0, 0);
+
+// UI Specific
+$nav-background: rgba(34, 13, 82, 0.95);
+$nav-overlay: rgba(22, 11, 68, 0.8);
+
+$input-bg: rgba(150, 150, 150, 0.1);
+$input-bg-gray: rgba(204, 204, 204, 0.1);
+
+// Warm Colors
+$gold-400: rgba(218, 201, 166, 0.8);
+$gold-500: rgba(218, 201, 166, 1);
+
+$bronze-300: rgba(188, 159, 119, 0.3);
+$bronze-600: rgba(188, 159, 119, 1);
+
+$sand-300: rgba(253, 237, 165, 0.459);
+
+$pink-300: pink;
+$pink-500: rgba(250, 119, 255, 1);
+$pink-700: deeppink;
+
+$plum-500: rgba(158, 122, 122, 1);
+
+// Water/Blue
+$bluegreen-400: rgba(120, 194, 196, 1);
+$bluegray-700: rgba(56, 68, 112, 1);
+
+$water-300: rgba(100, 160, 180, 1);
+$water-500: rgba(46, 120, 150, 1);
+$water-600: rgba(29, 101, 122, 1);
+$water-800: rgba(9, 0, 90, 1);
+
+$sky-300: rgba(129, 199, 255, 1);
+$sky-500: rgba(46, 169, 223, 1);
+
+/*======== Size ========*/
+// font-size
+$logo-large: 96px;
+$l: 36px;
+$m: 24px;
+$n: 20px;
+$d: 18px;
+$s: 16px;
+$xs: 14px;

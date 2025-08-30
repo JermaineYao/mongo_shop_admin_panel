@@ -1,0 +1,15 @@
+@use '../../variables.scss' as *;
+@use '../../mixin.scss' as *;
+
+#sign-in {
+  @include flex(column, nowrap, stretch, flex-start);
+  gap: 100px;
+  margin-top: 200px;
+  opacity: 1;
+
+  .action-container {
+    @include flex(column, nowrap, center, center, 20px);
+    width: 100%;
+    margin-top: 50px;
+  }
+}

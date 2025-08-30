@@ -81,13 +81,13 @@
   user-select: none;
 }
 
-@mixin RWDMAX($w) {
+@mixin rwd-max($w) {
   @media only screen and (max-width: $w) {
     @content;
   }
 }
 
-@mixin RWDMIN($w) {
+@mixin rwd-min($w) {
   @media only screen and (min-width: $w) {
     @content;
   }
@@ -101,6 +101,6 @@
 
 @mixin glass($bgc, $blur: 5px) {
   background-color: $bgc;
-  box-shadow: 0 0 5px 0 $black-t2;
+  box-shadow: 2px 2px 5px 0 $black-20;
   backdrop-filter: blur($blur);
 }

@@ -16,7 +16,6 @@
     "@mui/icons-material": "^6.4.8",
     "@mui/material": "^6.4.8",
     "@reduxjs/toolkit": "^2.6.1",
-    "@tailwindcss/vite": "^4.1.0",
     "axios": "^1.8.3",
     "gsap": "^3.12.5",
     "path": "^0.12.7",
@@ -46,7 +45,7 @@
   "prettier": {
     "singleQuote": true,
     "semi": false,
-    "printWidth": 100,
+    "printWidth": 90,
     "trailingComma": "none",
     "tabWidth": 2,
     "spaceBeforeFunctionParen": true,

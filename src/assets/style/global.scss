@@ -8,13 +8,94 @@ body {
   font-family: 'Noto Serif TC', serif;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
 .page {
   width: 100vw;
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(200deg, $light-blue 0%, $deep-purple 100%);
+  background: linear-gradient(200deg, $brand-gray-600 0%, $brand-primary-900 100%);
+}
+
+hr {
+  border: none;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/*====== scroll ======*/
+body::-webkit-scrollbar {
+  display: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll_wrap {
+  @include flex(column, nowrap, flex-start, stretch);
+  flex-grow: 1;
+  overflow-x: scroll;
+}
+
+.scroll_wrap.table {
+  &::-webkit-scrollbar {
+    display: block;
+    height: 10px;
+
+    @include rwd-max(1366px) {
+      display: none;
+    }
+  }
+
+  &::-webkit-scrollbar-button {
+    background: transparent;
+
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @include glass($black-20);
+    border-radius: 4px;
+    background-color: $white-15;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: transparent;
+  }
+}
+
+/*====== msg ======*/
+span.alert,
+span.alert-item {
+  position: absolute;
+  bottom: -26px;
+  right: 0;
+  font-size: $xs;
+  color: $white;
+  text-shadow:
+    0 0 4px $pink-700,
+    0 0 4px $pink-700,
+    0 0 4px $pink-300;
+  // display: none;
+  pointer-events: none;
+
+  // &.active {
+  //   display: block;
+  // }
+
+  &.pass {
+    display: block;
+    text-shadow:
+      0 0 4px $water-300,
+      0 0 4px $water-300,
+      0 0 4px $water-300;
+  }
 }

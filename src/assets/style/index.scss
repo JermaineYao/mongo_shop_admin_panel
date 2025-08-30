@@ -1,8 +1,19 @@
 @forward './global';
+@forward './mui/mui';
 
 /*====== views ======*/
-// App
+@forward './ui/btn';
+@forward './ui/input';
+
+/*====== views ======*/ // App
 @forward './views/app';
+
+// Home
+@forward './views/home';
 
 /*====== components ======*/
 @forward './components/logo';
+
+// home
+@forward './components/home/sign_in';
+@forward './components/home/forgot_pwd';

@@ -1,0 +1,12 @@
+@use '../../variables.scss' as *;
+@use '../../mixin.scss' as *;
+
+#forgot-pwd {
+  @include flex(column, nowrap, stretch, flex-start);
+  gap: 50px;
+  margin-top: 200px;
+
+  .home-toggle {
+    margin-top: 50px;
+  }
+}
