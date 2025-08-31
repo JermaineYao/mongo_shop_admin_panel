@@ -105,7 +105,7 @@ axiosRequest.interceptors.response.use(
     try {
       if (error.response.status === 500 || error.response.status === 404) {
         // 若遇到error 500 就跳出提醒
-        alert('請求資料失敗，請重新整理頁面')
+        // alert('請求資料失敗，請重新整理頁面')
         // alert('伺服器發生錯誤，請聯繫相關單位進行處理！')
         // 權限
       } else if (error.response.status == 401) {

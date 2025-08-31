@@ -12,12 +12,12 @@ export default function InputLabelDynamic(props) {
     ...rest
   } = props
 
-  const isControlled = value ? true : false
+  const isControlled = 'value' in props
   const [innerValue, setInnerValue] = useState('')
-  const displayValue = isControlled ? value : innerValue
+  const displayValue = isControlled ? (value ?? '') : innerValue
 
   const handleChange = (e) => {
-    const v = e.target.value.trim()
+    const v = e.target.value
     if (!isControlled) setInnerValue(v)
     onChange?.(v)
   }

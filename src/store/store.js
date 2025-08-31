@@ -1,13 +1,13 @@
 /*========================= Redux Toolkit =========================*/
 import { configureStore } from '@reduxjs/toolkit'
 
-import { userSlice } from './slice/userSlice'
+import { msgReducers } from './slice/msgSlice'
 
 /*-------------------- store --------------------*/
 
 const store = configureStore({
   reducer: {
-    user: userSlice.reducer
+    msg: msgReducers
   }
 })
 

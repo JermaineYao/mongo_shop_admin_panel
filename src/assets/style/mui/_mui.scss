@@ -1,6 +1,7 @@
 @use '../variables.scss' as *;
 @use '../mixin.scss' as *;
 
+// input
 .MuiInput-root {
   .MuiInput-input {
     color: $gold-500;
@@ -24,5 +25,40 @@
   /* 聚焦時的底線顏色 */
   &.MuiInput-underline:after {
     border-bottom: 2px solid $gold-500 !important;
+  }
+}
+
+// alert
+.MuiAlert-root {
+  border-radius: 0 !important;
+
+  &.MuiAlert-colorSuccess {
+    color: $brand-primary-700;
+    background-color: $white-60;
+
+    .MuiAlert-icon {
+      color: $brand-primary-700 !important;
+    }
+
+    .MuiAlert-message {
+      color: $brand-primary-700 !important;
+      // transform: translateY(1px);
+      font-size: $s;
+    }
+  }
+
+  &.MuiAlert-colorError {
+    color: $white;
+    background-color: $pink-900;
+
+    .MuiAlert-icon {
+      color: $white !important;
+    }
+
+    .MuiAlert-message {
+      color: $white !important;
+      // transform: translateY(1px);
+      font-size: $s;
+    }
   }
 }
