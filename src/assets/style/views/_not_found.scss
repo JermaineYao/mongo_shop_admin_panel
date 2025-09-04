@@ -1,0 +1,34 @@
+@use '../variables.scss' as *;
+@use '../mixin.scss' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+#not-found {
+  @include no-select;
+  @include flex(column, nowrap, center, flex-start, 200px);
+  height: 100vh;
+  height: 100dvh;
+  padding-top: 10vh;
+  padding-top: 10dvh;
+  font-family: 'Montserrat', sans-serif;
+
+  .not-found-wrap {
+    @include fcc;
+    gap: 30px;
+
+    span.not-found-404 {
+      font-size: 100px;
+      color: $gray-500;
+      opacity: 0.6;
+
+      @include rwd-max(1024px) {
+        font-size: 80px;
+      }
+    }
+
+    .btn {
+      width: 200px;
+      margin-left: auto;
+    }
+  }
+}

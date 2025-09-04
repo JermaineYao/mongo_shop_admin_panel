@@ -1,20 +1,17 @@
 @use '../variables.scss' as *;
 @use '../mixin.scss' as *;
 
-#home {
+#set-pwd {
   @include fcc;
   overflow: scroll;
 
-  .home-container {
-    // @include flex(column, nowrap, space-between, stretch);
-    // gap: 20px;
+  .set-pwd-container {
     height: 80vh;
     height: 80dvh;
     position: relative;
   }
 
-  .home-toggle,
-  .send-email {
+  .home-toggle {
     @include no-select();
     color: $gray-400;
     font-size: $s;
@@ -34,20 +31,6 @@
     }
   }
 
-  .send-email {
-    transition: all 300ms ease 300ms;
-  }
-
-  .btn {
-    width: 320px;
-  }
-
-  .action-container {
-    @include flex(column, nowrap, center, center, 20px);
-    width: 100%;
-    margin-top: 150px;
-  }
-
   .page-show {
     position: absolute;
     inset: 0;
@@ -62,6 +45,23 @@
       visibility: visible;
       pointer-events: auto;
       opacity: 1;
+    }
+  }
+
+  .btn {
+    width: 320px;
+  }
+
+  #set-pwd-wrap {
+    @include flex(column, nowrap, stretch, flex-start);
+    gap: 100px;
+    margin-top: 200px;
+    opacity: 1;
+
+    .action-container {
+      @include flex(column, nowrap, center, center, 20px);
+      width: 100%;
+      margin-top: 50px;
     }
   }
 }

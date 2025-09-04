@@ -1,10 +1,19 @@
-import { useState } from 'react'
-
-import Logo from '@comp/Logo'
-import SignIn from '@comp/home/SignIn'
-import ForgotPwd from '@comp/home/ForgotPwd'
+import { useState, useEffect } from 'react'
+// redux
+import { useDispatch } from 'react-redux'
+import { resetUser } from '../store/slice/userSlice'
+// component
+import Logo from '../components/Logo'
+import SignIn from '../components/home/SignIn'
+import ForgotPwd from '../components/home/ForgotPwd'
 
 export default function Home() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(resetUser())
+  }, [dispatch])
+
   const [forgotPwd, setForgotPwd] = useState(false)
 
   function toForgotPwd() {

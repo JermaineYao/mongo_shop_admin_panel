@@ -1,0 +1,133 @@
+@use '../../variables.scss' as *;
+@use '../../mixin.scss' as *;
+
+#account {
+  @include flex(column, nowrap, center, flex-start, 100px);
+
+  .account-container {
+    @include flex(column, nowrap, stretch, flex-start, 50px);
+    width: 600px;
+
+    .account-wrap {
+      @include glass($black-20);
+      padding: 20px;
+    }
+
+    @include rwd-max(1024px) {
+      width: 100%;
+
+      .account-wrap {
+        @include glass($black-20);
+        padding: 20px 30px;
+      }
+    }
+  }
+
+  .account-base-container {
+    @include flex(row, nowrap, stretch, space-between);
+
+    @include rwd-max(1024px) {
+      @include flex(column, nowrap, center, flex-start, 30px);
+      width: auto;
+    }
+
+    .account-base-wrap {
+      @include flex(column, nowrap, flex-end, space-between);
+    }
+
+    .account-name-role-email {
+      @include flex(column, nowrap, flex-start, flex-start, 10px);
+
+      .account-name-role {
+        @include flex(row, nowrap, flex-start, flex-start, 15px);
+
+        .account-name {
+          font-size: $l;
+          font-weight: 700;
+          letter-spacing: 1px;
+        }
+
+        .role {
+          padding: 3px 8px;
+          border-radius: 5px;
+          background-color: $white-30;
+
+          &.admin {
+            background-color: $gold-400;
+          }
+
+          &.user {
+            background-color: $gray-400;
+          }
+
+          span {
+            letter-spacing: 1px;
+            color: $brand-primary-900 !important;
+          }
+        }
+      }
+    }
+
+    .account-active-container {
+      @include flex(row, nowrap, center, center);
+
+      .account-active {
+        color: $white-30;
+
+        &.is-active,
+        &.not-active {
+          color: $white;
+        }
+      }
+
+      @include rwd-max(1024px) {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .account-contact-container,
+  .account-pwd-container {
+    @include flex(column, nowrap, stretch, flex-start, 30px);
+
+    .caption-wrap {
+      @include flex(row, nowrap, center, space-between, 15px);
+
+      .caption {
+        font-size: $m;
+      }
+
+      .action-wrap {
+        @include frc;
+        gap: 10px;
+      }
+    }
+
+    .btn {
+      padding: 0px 8px;
+      height: 36px;
+
+      span {
+        font-size: $d;
+      }
+    }
+  }
+
+  .account-contact-wrap,
+  .account-pwd-wrap {
+    @include flex(column, nowrap, stretch, flex-start, 15px);
+
+    .MuiFormControl-root.MuiTextField-root {
+      width: 100%;
+    }
+
+    .account-contact-item,
+    .account-pwd-item {
+      @include flex(row, nowrap, flex-end, flex-start, 10px);
+
+      .title {
+        font-size: $d;
+      }
+    }
+  }
+}

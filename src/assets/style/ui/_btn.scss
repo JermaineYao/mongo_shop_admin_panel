@@ -14,12 +14,16 @@
     white-space: nowrap;
     letter-spacing: 1px;
     transform: translateY(-1px);
+    transition: all 700ms ease;
   }
 
   &:hover {
     background-color: $brand-primary-500;
-    color: $gold-500;
     transform: translate(2px, 2px);
     box-shadow: none;
+
+    span {
+      color: $gold-500 !important;
+    }
   }
 }

@@ -30,7 +30,6 @@ body {
 }
 
 #root {
-  height: 100vh;
   margin: auto;
   background:
     linear-gradient(170deg, $brand-gray-600 0%, $brand-primary-900 90%),
@@ -42,9 +41,9 @@ body {
     width: 2560px;
   }
 
-  // @include rwd-min(1920px) {
-  //   width: 1920px;
-  // }
+  @include rwd-min(1920px) {
+    width: 1920px;
+  }
 }
 
 .page {
@@ -53,18 +52,12 @@ body {
   min-height: 100dvh;
 }
 
-span {
-  color: $gray-400;
-}
-
 .page-view {
   @include flex(column, nowrap, stretch, flex-start);
   flex-grow: 1;
   height: 100vh;
   height: 100dvh;
-  max-width: 100vw;
-  padding: 30px;
-  overflow: hidden;
+  padding: 30px 30px 30px 50px;
 }
 
 .extend {
@@ -187,8 +180,11 @@ span.alert-item {
   bottom: -26px;
   right: 0;
   font-size: $xs;
-  color: $white !important;
-
+  color: $white;
+  text-shadow:
+    0 0 4px $pink-700,
+    0 0 4px $pink-700,
+    0 0 4px $pink-300;
   pointer-events: none;
 
   &.pass {
@@ -200,20 +196,8 @@ span.alert-item {
   }
 }
 
-span.alert,
-span.alert-item,
-.not-active,
-.not-enabled {
-  color: $white !important;
-  text-shadow:
-    0 0 4px $pink-700,
-    0 0 4px $pink-700,
-    0 0 4px $pink-300;
-}
-
 .is-active,
 .is-enabled {
-  color: $white !important;
   text-shadow:
     0 0 4px $water-300,
     0 0 4px $water-300,

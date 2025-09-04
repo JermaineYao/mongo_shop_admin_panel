@@ -1,10 +1,10 @@
 /*======== Colors ========*/
 // Brand
-$brand-primary-900: rgba(24, 0, 44, 1);
+$brand-primary-900: rgb(47, 0, 85);
 $brand-primary-700: rgba(18, 0, 59, 0.7);
 $brand-primary-500: rgba(24, 0, 44, 0.5);
 
-$brand-gray-600: rgb(99, 119, 145);
+$brand-gray-600: rgba(92, 83, 131, 0.952);
 
 // Neutral/Gray
 $gray-400: rgba(189, 192, 186, 1);
@@ -23,11 +23,13 @@ $white-60: rgba(255, 255, 255, 0.6);
 $transparent: rgba(0, 0, 0, 0);
 
 // UI Specific
-$nav-background: rgba(34, 13, 82, 0.95);
+$nav-background: rgba(34, 13, 82, 0.637);
 $nav-overlay: rgba(22, 11, 68, 0.8);
 
 $input-bg: rgba(150, 150, 150, 0.1);
 $input-bg-gray: rgba(204, 204, 204, 0.1);
+
+$loding-bg: rgba(21, 0, 59, 0.253);
 
 // Warm Colors
 $gold-400: rgba(218, 201, 166, 0.8);

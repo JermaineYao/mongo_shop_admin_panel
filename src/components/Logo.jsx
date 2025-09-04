@@ -2,12 +2,13 @@ export default function Logo(props) {
   const { large } = props
 
   return (
-    <div className="logo">
+    <div className={large ? 'logo' : 'logo small'}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="473.096"
-        height="118.768"
-        viewBox="0 0 473.096 118.768"
+        width={large ? '473.096' : '173'}
+        height={large ? '118.768' : '86'}
+        // viewBox="0 0 473.096 118.768"
+        viewBox={large ? '0 0 473.096 118.768' : '0 0 305 118.768'}
       >
         <g id="组_1" data-name="组 1" transform="translate(-353.904 -399.232)">
           <path
@@ -21,9 +22,9 @@ export default function Logo(props) {
           <text
             id="Coloured_Glaze_Workshop"
             data-name="Coloured Glaze Workshop"
-            transform={large ? 'translate(657 515)' : 'translate(590 535)'}
+            transform={large ? 'translate(657 515)' : 'translate(370 530)'}
             fill="#bdc0ba"
-            fontSize={large ? '16' : '22'}
+            fontSize={large ? '16' : '24'}
             fontFamily="TimesNewRomanPSMT, Times New Roman"
           >
             <tspan x="0" y="0">

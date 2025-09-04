@@ -1,0 +1,51 @@
+@use '../variables.scss' as *;
+@use '../mixin.scss' as *;
+
+table {
+  width: 100%;
+
+  th {
+    @include glass($black-20);
+    padding: 8px;
+
+    span {
+      color: $gray-400;
+      width: fit-content;
+      white-space: nowrap;
+    }
+  }
+
+  td {
+    @include glass($black-20);
+    padding: 15px;
+
+    span {
+      width: fit-content;
+      white-space: nowrap;
+    }
+  }
+
+  tbody tr {
+    cursor: pointer;
+
+    td {
+      text-align: center;
+      white-space: nowrap;
+      transition: all 700ms ease;
+    }
+
+    span {
+      transition: all 700ms ease;
+    }
+
+    &:hover {
+      td {
+        background-color: $brand-primary-500;
+
+        span {
+          color: $gold-500;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use '../variables.scss' as *;
+@use '../mixin.scss' as *;
+
+.loading-container {
+  position: relative;
+}
+
+.loading {
+  @include glass($transparent, $blur: 2px);
+  box-shadow: none;
+  @include fcc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+}
+
+.loading-off {
+  display: none;
+}

@@ -25,17 +25,18 @@ export default function ForgotPwd(props) {
   function emailBlur(e) {
     const v = e.target.value.trim()
 
-    if (v.length > 0) {
-      setEmailAlertMsg('')
-    }
-
     if (v.length === 0) {
       setEmailAlertMsg('信箱必填')
       return
     }
 
     const check = isValidEmail(v)
-    if (!check) setEmailAlertMsg('信箱格式錯誤')
+    if (!check) {
+      setEmailAlertMsg('信箱格式錯誤')
+      return
+    }
+
+    setEmailAlertMsg('')
   }
 
   // 發送 email

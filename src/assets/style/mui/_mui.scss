@@ -1,6 +1,10 @@
 @use '../variables.scss' as *;
 @use '../mixin.scss' as *;
 
+.MuiFormControl-root {
+  margin: 0 !important;
+}
+
 // input
 .MuiInput-root {
   .MuiInput-input {
@@ -61,4 +65,88 @@
       font-size: $s;
     }
   }
+}
+
+// switch
+/* 滑塊顏色 */
+.MuiSwitch-switchBase.Mui-checked {
+  color: $gold-500;
+}
+
+/* 底線背景顏色 */
+.MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+  background-color: $sky-300;
+}
+
+// text field
+/* Label 顏色 */
+.MuiInputLabel-root {
+  color: $gray-400 !important;
+}
+
+/* Label 聚焦時顏色 */
+.MuiInputLabel-root.Mui-focused {
+  color: $gold-500 !important;
+}
+
+/* 預設底線 */
+// .MuiInput-underline:before {
+//   border-bottom: 1px solid green !important;
+// }
+
+/* hover 底線 */
+// .MuiInput-underline:hover:before {
+//   border-bottom: 2px solid orange !important;
+// }
+
+/* focus 底線 */
+// .MuiInput-underline:after {
+//   border-bottom: 2px solid blue !important;
+// }
+
+/* 輸入文字 */
+.MuiInputBase-input {
+  color: $gray-400 !important;
+}
+
+/* 錯誤訊息（helperText） */
+.MuiFormHelperText-root.Mui-error {
+  color: $white !important;
+  text-shadow:
+    0 0 4px $pink-700,
+    0 0 4px $pink-700,
+    0 0 4px $pink-300;
+}
+
+/* Label 在錯誤時 */
+.MuiInputLabel-root.Mui-error {
+  color: $white !important;
+  text-shadow:
+    0 0 4px $pink-700,
+    0 0 4px $pink-700,
+    0 0 4px $pink-300;
+}
+
+/* 標準款（standard）底線在錯誤時 */
+.MuiInput-underline.Mui-error:after {
+  color: $white !important;
+  text-shadow:
+    0 0 4px $pink-700,
+    0 0 4px $pink-700,
+    0 0 4px $pink-300;
+}
+
+// pagination
+.MuiPaginationItem-root {
+  color: $gray-400 !important;
+}
+
+.Mui-selected {
+  background-color: $transparent !important;
+  color: $gold-500 !important;
+  // text-shadow:
+  //   0 0 4px $water-300,
+  //   0 0 4px $water-300,
+  //   0 0 4px $water-300;
+  font-size: $n !important;
 }

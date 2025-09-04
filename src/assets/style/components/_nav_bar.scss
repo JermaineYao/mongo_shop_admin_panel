@@ -1,0 +1,140 @@
+@use '../variables.scss' as *;
+@use '../mixin.scss' as *;
+
+#nav-bar {
+  @include glass($black-20, 15px);
+  position: relative;
+  flex-shrink: 0;
+  width: 260px;
+  height: 100vh;
+  height: 100dvh;
+  padding: 20px;
+  transition: all 500ms ease;
+
+  @include rwd-max(1024px) {
+    width: 200px;
+  }
+
+  &.closed {
+    width: 0;
+    padding: 0;
+
+    .nav-container {
+      display: none;
+    }
+  }
+
+  .nav-container {
+    @include flex(column, nowrap, flex-start, stretch, 30px);
+    overflow: hidden;
+  }
+
+  * {
+    @include no-select;
+  }
+
+  span {
+    color: $gray-500;
+    letter-spacing: 1px;
+    transition: all 500ms ease;
+  }
+
+  path {
+    transition: all 500ms ease;
+  }
+
+  .logo {
+    align-self: center;
+  }
+
+  .user-wrap {
+    width: 100%;
+
+    .user-avadar {
+      @include flex(row, nowrap, center, flex-start, 20px);
+      cursor: pointer;
+
+      @include rwd-max(1024px) {
+        gap: 10px;
+      }
+
+      span {
+        font-size: $n;
+      }
+
+      .img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      &:hover {
+        path,
+        span {
+          color: $white;
+        }
+      }
+
+      &.active {
+        path,
+        span {
+          color: $gold-500;
+        }
+      }
+    }
+
+    .logout {
+      @include frr;
+      gap: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+
+      @include rwd-max(1024px) {
+        gap: 0;
+      }
+
+      &:hover {
+        path,
+        span {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  nav {
+    @include flex(column, nowrap, stretch, flex-start, 20px);
+
+    span {
+      font-size: $m;
+      white-space: nowrap;
+    }
+
+    .nav-item {
+      &:hover {
+        span {
+          color: $white;
+        }
+      }
+    }
+
+    .active {
+      span {
+        font-weight: 700;
+        letter-spacing: 5px;
+        color: $gold-500;
+      }
+    }
+  }
+
+  #toggle-nav {
+    @include glass($black-20, 15px);
+    @include fcc;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: -50px;
+    cursor: pointer;
+  }
+}

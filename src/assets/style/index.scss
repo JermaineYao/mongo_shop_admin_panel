@@ -4,16 +4,35 @@
 /*====== views ======*/
 @forward './ui/btn';
 @forward './ui/input';
+@forward './ui/loading';
+@forward './ui/table';
 
 /*====== views ======*/ // App
 @forward './views/app';
 
 // Home
 @forward './views/home';
+// Not Found
+@forward './views/not_found';
+// Set Pwd
+@forward './views/set_pwd_from_link';
+
+// Admin Panel
+@forward './views/adminPanel/admin_panel';
+// Users
+@forward './views/adminPanel/users';
 
 /*====== components ======*/
+// logo
 @forward './components/logo';
+// no data
+@forward './components/adminPanel/no_data';
+// nav
+@forward './components/nav_bar';
 
 // home
 @forward './components/home/sign_in';
 @forward './components/home/forgot_pwd';
+
+// admin panel
+@forward './components/adminPanel/account';

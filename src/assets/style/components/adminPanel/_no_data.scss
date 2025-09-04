@@ -1,0 +1,13 @@
+@use '../../variables.scss' as *;
+@use '../../mixin.scss' as *;
+
+.no-data {
+  @include fcc;
+  width: 100%;
+  flex-grow: 1;
+
+  span {
+    font-size: $d;
+    color: $white-30;
+  }
+}

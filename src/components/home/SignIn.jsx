@@ -52,8 +52,7 @@ export default function SignIn(props) {
 
     loginApi(query)
       .then((res) => {
-        console.log(res)
-        if (res.status === 200) nav('/dashboard')
+        if (res.status === 200) nav('/admin_panel')
       })
       .catch((err) => {
         setLoading(false)

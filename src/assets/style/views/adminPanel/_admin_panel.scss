@@ -1,0 +1,6 @@
+@use '../../variables.scss' as *;
+@use '../../mixin.scss' as *;
+
+#admin-panel {
+  @include flex(row, nowrap, stretch, flex-start);
+}
