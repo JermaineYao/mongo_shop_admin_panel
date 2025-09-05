@@ -13,7 +13,6 @@ export const initUsers = {
 
 export function usersReducer(state, action) {
   const { type, payload } = action
-  console.log(payload)
 
   switch (type) {
     case 'init':
@@ -21,6 +20,12 @@ export function usersReducer(state, action) {
 
     case 'search':
       return { ...state, search: { ...state.search, ...payload.search } }
+
+    case 'set-page':
+      return {
+        ...state,
+        search: { ...state.search, currentPage: payload }
+      }
 
     case 'users':
       return { ...state, users: payload.users }

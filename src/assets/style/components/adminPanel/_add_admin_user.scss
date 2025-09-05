@@ -1,0 +1,39 @@
+@use '../../variables.scss' as *;
+@use '../../mixin.scss' as *;
+
+.add-admin-account {
+  @include modal($black-20);
+
+  .add-admin-account-container {
+    @include flex(column, nowrap, stretch, flex-start, 40px);
+    @include glass($modal-bg);
+    width: 600px;
+    padding: 20px;
+
+    .caption {
+      @include no-select();
+      align-self: flex-end;
+      font-size: $m;
+    }
+
+    .action-wrap {
+      @include frc;
+      gap: 20px;
+    }
+
+    .btn {
+      align-self: center;
+      padding: 0px 8px;
+      height: 36px;
+      width: fit-content;
+
+      span {
+        font-size: $d;
+      }
+    }
+
+    .input-wrap {
+      @include flex(column, nowrap, stretch, flex-start, 30px);
+    }
+  }
+}

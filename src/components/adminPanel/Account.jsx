@@ -1,9 +1,9 @@
 import { useState, useReducer, useEffect } from 'react'
+// ui
+import LoadingCover from '../ui/LoadingCover'
 // mui
 import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
-// ui
-import LoadingCover from '../ui/LoadingCover'
 // utils
 import { isValidPhoneNumber, isValidPwd } from '../../utils/utils'
 // hook

@@ -4,6 +4,7 @@
 .btn {
   @include frc;
   @include glass($white-15);
+  @include no-select();
   height: 42px;
   font-size: $n;
   color: $white;

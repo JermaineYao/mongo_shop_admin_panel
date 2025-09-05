@@ -104,3 +104,15 @@
   box-shadow: 2px 2px 5px 0 $black-20;
   backdrop-filter: blur($blur);
 }
+
+@mixin modal($bg) {
+  @include glass($bg);
+  @include fcc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 100;
+}

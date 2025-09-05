@@ -1,3 +1,11 @@
+// 驗證帳號
+export function isValidAccount(value) {
+  const strictRegex = /^[a-zA-Z][a-zA-Z0-9]*$/
+
+  if (typeof value === 'string' && value.trim().length > 0)
+    return strictRegex.test(value.trim())
+}
+
 // 驗證 email
 export function isValidEmail(value) {
   const strictRegex =

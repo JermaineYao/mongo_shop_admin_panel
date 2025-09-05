@@ -7,7 +7,7 @@
   width: 100%;
   max-width: 1440px;
   align-self: center;
-  // overflow: hidden;
+  position: relative;
 
   .users-item {
     @include glass($black-20);

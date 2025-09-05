@@ -34,6 +34,7 @@
 
 // alert
 .MuiAlert-root {
+  @include no-select();
   border-radius: 0 !important;
 
   &.MuiAlert-colorSuccess {
@@ -111,6 +112,7 @@
 
 /* 錯誤訊息（helperText） */
 .MuiFormHelperText-root.Mui-error {
+  @include no-select();
   color: $white !important;
   text-shadow:
     0 0 4px $pink-700,
@@ -120,6 +122,7 @@
 
 /* Label 在錯誤時 */
 .MuiInputLabel-root.Mui-error {
+  @include no-select();
   color: $white !important;
   text-shadow:
     0 0 4px $pink-700,
@@ -129,6 +132,7 @@
 
 /* 標準款（standard）底線在錯誤時 */
 .MuiInput-underline.Mui-error:after {
+  @include no-select();
   color: $white !important;
   text-shadow:
     0 0 4px $pink-700,
@@ -138,10 +142,12 @@
 
 // pagination
 .MuiPaginationItem-root {
+  @include no-select();
   color: $gray-400 !important;
 }
 
 .Mui-selected {
+  @include no-select();
   background-color: $transparent !important;
   color: $gold-500 !important;
   // text-shadow:

@@ -51,9 +51,9 @@ export const queryMyAccountApi = () => {
 }
 
 // 查詢用戶帳號
-export const queryAccountApi = (query) => {
+export const queryAccountApi = (query, singal) => {
   const url = `${baseUrl}/query_user`
-  return catchErr(http.post(url, { ...query }))
+  return catchErr(http.post(url, { ...query, singal }))
 }
 
 // 上傳照片
@@ -112,5 +112,26 @@ export const changePwdApi = (query) => {
 // 取得所有帳號
 export const queryAllAccountsApi = (query) => {
   const url = `${baseUrl}/all`
+  return catchErr(http.post(url, { ...query }))
+}
+
+// 註冊前檢查帳號 信箱是否已被使用
+/**
+ * account, email 至少給一個
+ * @param {string || null} account
+ * @param {string || null} email
+ */
+export const checkAccountEmailApi = (query) => {
+  const url = `${baseUrl}/check_user_admin`
+  return catchErr(http.post(url, { ...query }))
+}
+
+// 新增管理員帳號
+/**
+ * @param {string} req.body.account
+ * @param {string} req.body.email
+ */
+export const addAccountApi = (query) => {
+  const url = `${baseUrl}/add_user_admin`
   return catchErr(http.post(url, { ...query }))
 }

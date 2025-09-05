@@ -74,6 +74,7 @@ span {
 
 .page-title {
   @include flex(column, nowrap, flex-end, flex-start, 20px);
+  @include no-select();
   padding: 0 20px;
 
   span {

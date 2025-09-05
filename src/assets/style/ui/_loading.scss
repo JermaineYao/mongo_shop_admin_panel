@@ -6,9 +6,9 @@
 }
 
 .loading {
+  @include fcc;
   @include glass($transparent, $blur: 2px);
   box-shadow: none;
-  @include fcc;
   position: absolute;
   top: 0;
   left: 0;

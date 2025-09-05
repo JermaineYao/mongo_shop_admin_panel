@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect, useReducer, useRef } from 'react'
 // router
 import { useLocation, useLoaderData } from 'react-router-dom'
 // ui
@@ -21,6 +21,7 @@ import { initUsers, usersReducer } from '@/reducer/users'
 import { useDispatch } from 'react-redux'
 import { setMsg, toggleMsg } from '../../store/slice/msgSlice'
 // component
+import AddAdminAccount from '@comp/adminPanel/AddAdminAccount'
 import PageTitle from '@comp/adminPanel/PageTitle'
 import NoData from '@comp/adminPanel/NoData'
 
@@ -28,44 +29,74 @@ export default function Users() {
   const dispatch = useDispatch()
   const title = useLocation().state
   const myAccount = useLoaderData()
+  const controllerRef = useRef(null)
 
   const handleError = useError()
-
-  useEffect(() => {
-    queryAllAccounts()
-  }, [])
 
   // 查詢所有帳號
   const [usersLoading, setUsersLoading] = useState(false)
   const [accounts, accountsDispatch] = useReducer(usersReducer, initUsers)
 
+  // 新增帳號
+  const [openModal, setOpenModal] = useState(false)
+
+  useEffect(() => {
+    if (!openModal) queryAllAccounts()
+
+    return () => {
+      if (controllerRef.current) controllerRef.current.abort()
+    }
+  }, [openModal, accounts.search.currentPage])
+
   function queryAllAccounts() {
+    if (usersLoading) return
+
+    // 中止前一次請求
+    if (controllerRef.current) controllerRef.current.abort()
+    const controller = new AbortController()
+    controllerRef.current = controller
+    const { signal } = controller
+
+    setUsersLoading(true)
     const query = { ...accounts.search }
 
     for (const key in query) {
       if (query[key] === '' || query[key] === 'all' || query[key] === null)
         delete query[key]
     }
-    accountsDispatch({ type: 'clear-users' })
 
-    queryAllAccountsApi(query).then((res) => {
-      if (res.status === 200) {
-        const data = res.data
+    queryAllAccountsApi(query, signal)
+      .then((res) => {
+        if (res.status === 200) {
+          const data = res.data
 
-        const all = data.data.filter((u) => u._id !== myAccount._id)
-        accountsDispatch({ type: 'users', payload: { users: all } })
+          const all = data.data.filter((u) => u._id !== myAccount._id)
+          accountsDispatch({ type: 'users', payload: { users: all } })
 
-        accountsDispatch({
-          type: 'total-page',
-          payload: data.totalPages
-        })
+          accountsDispatch({
+            type: 'total-page',
+            payload: data.totalPages
+          })
 
-        accountsDispatch({
-          type: 'data-count',
-          payload: data.dataCount
-        })
-      }
-    })
+          accountsDispatch({
+            type: 'data-count',
+            payload: data.dataCount
+          })
+        }
+      })
+      .catch((err) => {
+        if (err?.name === 'AbortError' || err?.name === 'CanceledError') return
+
+        handleError(err)
+      })
+      .finally(() => {
+        setUsersLoading(false)
+      })
+  }
+
+  // 分頁查詢
+  function queryAccountByPage(_e, page) {
+    accountsDispatch({ type: 'set-page', payload: page })
   }
 
   function selectOnBlur(fieldName, e) {
@@ -138,9 +169,9 @@ export default function Users() {
     <main className="page-view">
       <PageTitle title={title}></PageTitle>
 
-      <div id="users" className="extend loading-container scroll-wrap-y">
-        <LoadingCover open={usersLoading} />
+      {openModal ? <AddAdminAccount setOpenModal={setOpenModal}></AddAdminAccount> : null}
 
+      <div id="users" className={usersLoading ? 'extend' : 'extend scroll-wrap-y'}>
         <section className="users-container ">
           <section className="search-container users-item">
             <div className="search-wrap">
@@ -202,18 +233,20 @@ export default function Users() {
                 <Pagination
                   className="pages"
                   count={accounts.totalPages}
-                  page={accounts.currentPage}
-                  // onChange={handleChange}
+                  page={accounts.search.currentPage}
+                  onChange={queryAccountByPage}
                   color="primary"
                 />
               ) : null}
 
-              <div className="btn add-account">
+              <div className="btn add-account" onClick={() => setOpenModal(true)}>
                 <span>新增管理員</span>
               </div>
             </div>
 
-            <div className="users-table-container scroll-wrap-x">
+            <div className="users-table-container loading-container scroll-wrap-x">
+              <LoadingCover open={usersLoading} />
+
               {accounts.users.length > 0 ? (
                 <table>
                   <thead>
