@@ -2,13 +2,13 @@
 @use '../../mixin.scss' as *;
 
 .add-admin-account {
-  @include modal($black-20);
+  @include modal($black-60);
 
   .add-admin-account-container {
     @include flex(column, nowrap, stretch, flex-start, 40px);
     @include glass($modal-bg);
     width: 600px;
-    padding: 20px;
+    padding: 20px 40px;
 
     .caption {
       @include no-select();
