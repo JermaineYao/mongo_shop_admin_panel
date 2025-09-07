@@ -12,6 +12,7 @@ import Products from '../views/adminPanel/Products'
 
 import Users from '../views/adminPanel/Users'
 import MyAccount from '../views/adminPanel/MyAccount'
+import UserDetail from '../views/adminPanel/UserDetail'
 
 import Orders from '../views/adminPanel/Orders'
 
@@ -85,10 +86,16 @@ export const routeMap = [
             loader: isLoginAndActive
           },
           {
+            path: 'user/:id',
+            element: <UserDetail />,
+            loader: isLoginAndActive
+          },
+          {
             path: 'my_account',
             element: <MyAccount />,
             loader: isLogin
           },
+
           {
             path: 'orders',
             element: <Orders />,

@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux'
 import { setMsg, toggleMsg } from '../../store/slice/msgSlice'
 
 export default function AddAdminAccount(props) {
-  const setOpenModal = props.setOpenModal
+  const { setOpenModal, cancelAddingAccount } = props
   const dispatch = useDispatch()
   const handleError = useError()
 
@@ -152,7 +152,7 @@ export default function AddAdminAccount(props) {
             <span>新增帳號</span>
           </div>
 
-          <div className="btn" onClick={() => setOpenModal(false)}>
+          <div className="btn" onClick={cancelAddingAccount}>
             <span>取消</span>
           </div>
         </div>

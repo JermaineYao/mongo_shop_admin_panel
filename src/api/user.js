@@ -131,7 +131,7 @@ export const checkAccountEmailApi = (query) => {
  * @param {string} req.body.account
  * @param {string} req.body.email
  */
-export const addAccountApi = (query) => {
+export const addAccountApi = (query, singal) => {
   const url = `${baseUrl}/add_user_admin`
-  return catchErr(http.post(url, { ...query }))
+  return catchErr(http.post(url, { ...query, singal }))
 }

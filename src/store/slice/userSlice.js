@@ -25,7 +25,6 @@ export const userSlice = createSlice({
       return state
     },
     setUserInfo(state, action) {
-      console.log(action.payload)
       const { field, value } = action.payload
       state[field] = value
     },

@@ -15,22 +15,23 @@ export const initAccount = {
 
 export function accountReducer(state, action) {
   const { type, payload } = action
+  console.log(payload)
 
   switch (type) {
     case 'init':
       return { ...initAccount, ...payload }
 
     case 'photo':
-      return { ...state, photo: { ...payload.photo } }
+      return { ...state, photo: { ...payload } }
 
-    case 'phone':
-      return { ...state, phoneNumber: payload.phoneNumber }
+    case 'phoneNumber':
+      return { ...state, phoneNumber: payload }
 
     case 'address':
-      return { ...state, address: payload.address }
+      return { ...state, address: payload }
 
     case 'active':
-      return { ...state, active: payload.active }
+      return { ...state, active: payload }
 
     case 'clear':
       return { ...initAccount, photo: { ...initAccount.photo } }

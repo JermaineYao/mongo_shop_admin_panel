@@ -19,6 +19,8 @@
 
 // Admin Panel
 @forward './views/adminPanel/admin_panel';
+// UserDeial, MyAccount
+@forward './views/adminPanel/account';
 // Users
 @forward './views/adminPanel/users';
 
@@ -34,7 +36,5 @@
 @forward './components/home/sign_in';
 @forward './components/home/forgot_pwd';
 
-// admin panel
-@forward './components/adminPanel/account';
 // add admin account
 @forward './components/adminPanel/add_admin_user';

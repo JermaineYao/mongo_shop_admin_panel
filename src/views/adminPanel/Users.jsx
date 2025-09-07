@@ -1,6 +1,6 @@
 import { useState, useEffect, useReducer, useRef } from 'react'
 // router
-import { useLocation, useLoaderData } from 'react-router-dom'
+import { useNavigate, useLoaderData, useSearchParams } from 'react-router-dom'
 // ui
 import LoadingCover from '../../components/ui/LoadingCover'
 // mui
@@ -20,6 +20,8 @@ import { initUsers, usersReducer } from '@/reducer/users'
 // redux
 import { useDispatch } from 'react-redux'
 import { setMsg, toggleMsg } from '../../store/slice/msgSlice'
+// icon
+import SearchIcon from '@mui/icons-material/Search'
 // component
 import AddAdminAccount from '@comp/adminPanel/AddAdminAccount'
 import PageTitle from '@comp/adminPanel/PageTitle'
@@ -27,28 +29,54 @@ import NoData from '@comp/adminPanel/NoData'
 
 export default function Users() {
   const dispatch = useDispatch()
-  const title = useLocation().state
+  const nav = useNavigate()
+  const title = '帳號管理'
+
   const myAccount = useLoaderData()
   const controllerRef = useRef(null)
+  // const searchParams = useSearchParams()
 
+  // console.log(Object.fromEntries(searchParams.entries()))
   const handleError = useError()
 
   // 查詢所有帳號
   const [usersLoading, setUsersLoading] = useState(false)
   const [accounts, accountsDispatch] = useReducer(usersReducer, initUsers)
 
+  // url 查詢參數
+  const [searchParams, setSearchParams] = useSearchParams()
+  const urlSreach = {
+    account: searchParams.get('account') || '',
+    email: searchParams.get('email') || '',
+    role: searchParams.get('role') || 'all',
+    active: getActive(searchParams.get('active')),
+    currentPage: searchParams.get('currentPage') * 1 || 1
+  }
+
+  function getActive(v) {
+    if (v === 'false') return false
+    if (v === 'true') return true
+
+    return 'all'
+  }
+
+  // 預設查詢
+  useEffect(() => {
+    accountsDispatch({ type: 'search', payload: { search: urlSreach } })
+    queryAllAccounts(urlSreach)
+
+    setSearchParams({}, { replace: true })
+  }, [])
+
   // 新增帳號
   const [openModal, setOpenModal] = useState(false)
 
-  useEffect(() => {
-    if (!openModal) queryAllAccounts()
+  function cancelAddingAccount() {
+    queryAllAccounts()
+    setOpenModal(false)
+  }
 
-    return () => {
-      if (controllerRef.current) controllerRef.current.abort()
-    }
-  }, [openModal, accounts.search.currentPage])
-
-  function queryAllAccounts() {
+  function queryAllAccounts(queryOverride) {
     if (usersLoading) return
 
     // 中止前一次請求
@@ -58,7 +86,7 @@ export default function Users() {
     const { signal } = controller
 
     setUsersLoading(true)
-    const query = { ...accounts.search }
+    const query = queryOverride ? queryOverride : { ...accounts.search }
 
     for (const key in query) {
       if (query[key] === '' || query[key] === 'all' || query[key] === null)
@@ -97,6 +125,8 @@ export default function Users() {
   // 分頁查詢
   function queryAccountByPage(_e, page) {
     accountsDispatch({ type: 'set-page', payload: page })
+    const query = { ...accounts.search, currentPage: page }
+    queryAllAccounts(query)
   }
 
   function selectOnBlur(fieldName, e) {
@@ -120,7 +150,7 @@ export default function Users() {
   }
 
   // 查詢結果表格
-  const tableHead = ['帳號', '信箱', '身分', '是否啟用']
+  const tableHead = ['帳號', '信箱', '身分', '是否啟用', '查看']
 
   // 是否啟用
   async function toggleUserActive(enable, id, account) {
@@ -165,11 +195,21 @@ export default function Users() {
     toggleUserActive(enable, id, account)
   }
 
+  // 查看帳號資訊
+  function checkAccount(id) {
+    nav(`/admin_panel/user/${id}`, { state: { search: accounts.search } })
+  }
+
   return (
     <main className="page-view">
       <PageTitle title={title}></PageTitle>
 
-      {openModal ? <AddAdminAccount setOpenModal={setOpenModal}></AddAdminAccount> : null}
+      {openModal ? (
+        <AddAdminAccount
+          setOpenModal={setOpenModal}
+          cancelAddingAccount={cancelAddingAccount}
+        ></AddAdminAccount>
+      ) : null}
 
       <div id="users" className={usersLoading ? 'extend' : 'extend scroll-wrap-y'}>
         <section className="users-container ">
@@ -220,7 +260,7 @@ export default function Users() {
               </FormControl>
             </div>
 
-            <div className="action-wrap" onClick={queryAllAccounts}>
+            <div className="action-wrap" onClick={() => queryAllAccounts()}>
               <div className="btn">
                 <span>查詢</span>
               </div>
@@ -299,6 +339,15 @@ export default function Users() {
                           >
                             啟用
                           </span>
+                        </td>
+
+                        <td>
+                          <div className="icon-action">
+                            <SearchIcon
+                              sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '30px' }}
+                              onClick={() => checkAccount(user._id)}
+                            ></SearchIcon>
+                          </div>
                         </td>
                       </tr>
                     ))}

@@ -17,7 +17,7 @@ table {
 
   td {
     @include glass($black-20);
-    padding: 15px;
+    padding: 10px;
 
     span {
       width: fit-content;
@@ -26,22 +26,42 @@ table {
   }
 
   tbody tr {
-    cursor: pointer;
+    // cursor: pointer;
 
     td {
       text-align: center;
       white-space: nowrap;
-      transition: all 700ms ease;
+      transition: all 500ms ease;
     }
 
     span {
-      transition: all 700ms ease;
+      transition: all 500ms ease;
+    }
+
+    .icon-action {
+      @include frc;
+      width: 40px;
+      height: 50px;
+      margin: auto;
+      cursor: pointer;
+
+      path {
+        transition: all 500ms ease;
+      }
+
+      &:hover {
+        path,
+        span {
+          color: $gold-500;
+        }
+      }
     }
 
     &:hover {
       td {
         background-color: $brand-primary-500;
 
+        path,
         span {
           color: $gold-500;
         }
