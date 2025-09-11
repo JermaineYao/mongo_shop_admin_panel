@@ -45,6 +45,10 @@ export default function Products() {
     productNameSub: searchParams.get('productNameSub') || '',
     category: searchParams.get('category') || 'all',
     enable: getEnable(searchParams.get('enable')),
+    price: {
+      gte: searchParams.get('price_gte') || '',
+      lte: searchParams.get('price_lte') || ''
+    },
     currentPage: searchParams.get('currentPage') * 1 || 1
   }
 
@@ -57,15 +61,6 @@ export default function Products() {
 
   // 查詢結果表格
   const tableHead = ['商品名稱', '分類', '單價 (NTD)', '庫存', '是否啟用', '查看']
-  // const tableHead = [
-  //   '商品主名稱',
-  //   '商品副名稱',
-  //   '分類',
-  //   '單價 (NTD)',
-  //   '庫存',
-  //   '是否啟用',
-  //   '查看'
-  // ]
 
   function categoryName(category) {
     switch (category) {
@@ -97,7 +92,6 @@ export default function Products() {
     }
   }, [])
 
-  // 查詢所有張品
   function queryAllProducts(queryOverride) {
     if (productsLoading) return
 
@@ -199,14 +193,14 @@ export default function Products() {
   }
 
   function onChangePrice(field, e) {
-    const raw = e.target.value
+    const v = e.target.value
 
     productsDispatch({
       type: 'search',
       payload: {
         price: {
           ...products.search.price,
-          [field]: raw
+          [field]: v
         }
       }
     })
@@ -305,7 +299,12 @@ export default function Products() {
 
   // 查看商品資訊
   function checkAccount(id) {
-    nav(`/admin_panel/product/${id}`, { state: { search: products.search } })
+    const search = { ...products.search }
+    search.price_gte = search.price.gte
+    search.price_lte = search.price.lte
+    delete search.price
+
+    nav(`/admin_panel/product/${id}`, { state: { search } })
   }
 
   return (

@@ -17,22 +17,10 @@
     width: 100%;
     max-width: 1200px;
 
-    @include rwd-max(1024px) {
-      width: 100%;
-
-      .product-wrap {
-        padding: 20px !important;
-      }
-    }
-
     .product-wrap {
       @include glass($black-20);
       padding: 20px;
     }
-
-    // @include rwd-max(1024px) {
-    //   width: 500px;
-    // }
 
     .product-name-container {
       @include flex(column, nowrap, space-between, flex-start, 10px);
@@ -43,11 +31,12 @@
         .name-main {
           color: $gold-500;
           font-size: $m;
-          font-weight: 700;
+          font-weight: 500;
         }
 
         .name-sub {
           color: $gold-500;
+          font-size: $n;
         }
       }
 

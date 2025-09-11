@@ -8,14 +8,15 @@ import NotFound from '../views/NotFound'
 
 import AdminPanel from '../views/adminPanel/AdminPanel'
 
-import Products from '../views/adminPanel/Products'
-
 import Users from '../views/adminPanel/Users'
 import MyAccount from '../views/adminPanel/MyAccount'
 import UserDetail from '../views/adminPanel/UserDetail'
+
+import Products from '../views/adminPanel/Products'
 import ProductDetail from '../views/adminPanel/ProductDetail'
 
 import Orders from '../views/adminPanel/Orders'
+import Order from '../views/adminPanel/Order'
 
 // api
 import { isLoginApi, logoutApi } from '../api/user'
@@ -101,11 +102,15 @@ export const routeMap = [
             element: <MyAccount />,
             loader: isLogin
           },
-
           {
             path: 'orders',
             element: <Orders />,
-            loader: isLogin
+            loader: isLoginAndActive
+          },
+          {
+            path: 'order/:orderNo',
+            element: <Order />,
+            loader: isLoginAndActive
           }
         ]
       }

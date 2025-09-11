@@ -24,6 +24,7 @@ export default function ProductDetail() {
   const title = '商品資訊'
   const controllerRef = useRef(null)
   const routerState = useLocation().state
+  console.log(routerState.search)
   const productId = useParams().id
 
   const nav = useNavigate()
@@ -75,6 +76,7 @@ export default function ProductDetail() {
   // 回帳號管理
   function returnToProducts() {
     const params = new URLSearchParams(routerState.search)
+    console.log('params', params)
     nav(`/admin_panel/products?${params.toString()}`)
   }
 

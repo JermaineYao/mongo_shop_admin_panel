@@ -18,7 +18,6 @@ export const initProduct = {
 
 export function productReducer(state, action) {
   const { type, payload, field } = action
-  console.log(payload)
 
   switch (type) {
     case 'init':
