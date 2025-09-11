@@ -121,9 +121,9 @@ export const queryAllAccountsApi = (query) => {
  * @param {string || null} account
  * @param {string || null} email
  */
-export const checkAccountEmailApi = (query) => {
+export const checkAccountEmailApi = (query, singal) => {
   const url = `${baseUrl}/check_user_admin`
-  return catchErr(http.post(url, { ...query }))
+  return catchErr(http.post(url, { ...query, singal }))
 }
 
 // 新增管理員帳號

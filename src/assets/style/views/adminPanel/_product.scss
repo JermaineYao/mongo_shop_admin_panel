@@ -1,0 +1,243 @@
+@use '../../variables.scss' as *;
+@use '../../mixin.scss' as *;
+
+#product {
+  @include flex(column, nowrap, center, flex-start, 100px);
+
+  span {
+    letter-spacing: 1px;
+  }
+
+  &.extend {
+    padding: 40px 20px;
+  }
+
+  .product-container {
+    @include flex(column, nowrap, stretch, flex-start, 30px);
+    width: 100%;
+    max-width: 1200px;
+
+    @include rwd-max(1024px) {
+      width: 100%;
+
+      .product-wrap {
+        padding: 20px !important;
+      }
+    }
+
+    .product-wrap {
+      @include glass($black-20);
+      padding: 20px;
+    }
+
+    // @include rwd-max(1024px) {
+    //   width: 500px;
+    // }
+
+    .product-name-container {
+      @include flex(column, nowrap, space-between, flex-start, 10px);
+
+      .product-name-wrap {
+        @include flex(column, nowrap, flex-start, flex-start, 10px);
+
+        .name-main {
+          color: $gold-500;
+          font-size: $m;
+          font-weight: 700;
+        }
+
+        .name-sub {
+          color: $gold-500;
+        }
+      }
+
+      hr {
+        background-color: $white-15;
+      }
+
+      .product-active-container {
+        @include frr;
+      }
+    }
+
+    .product-photo-container {
+      @include flex(column, nowrap, stretch, flex-start, 30px);
+
+      .photo-caption {
+        color: $gold-500;
+        font-size: $d;
+        font-weight: 700;
+      }
+
+      .delete {
+        @include glass($black-20);
+        width: 50px;
+        height: 50px;
+        right: 0;
+
+        path {
+          color: $gray-400;
+        }
+      }
+
+      .main-photo {
+        @include flex(column, nowrap, stretch, flex-start, 10px);
+        width: 300px;
+
+        .photo,
+        .empty {
+          width: 300px;
+          height: 300px;
+        }
+      }
+
+      .photo-caption-wrap {
+        @include flex(row, nowrap, center, space-between);
+
+        .remove-photo {
+          @include fcc;
+        }
+      }
+
+      .sub-photos {
+        @include flex(column, nowrap, stretch, flex-start, 10px);
+
+        .sub-photo-wrap {
+          @include grid-fixed-width(200px, 20px, 20px);
+          justify-items: start;
+          // @include frl;
+          // gap: 10px;
+        }
+
+        .photo-container {
+          @include flex(column, nowrap, flex-end, flex-start, 10px);
+        }
+
+        .photo-caption-wrap {
+          @include flex(row, nowrap, center, center, 10px);
+          align-self: flex-start;
+
+          .btn {
+            align-self: center;
+            padding: 0px 8px;
+            height: 36px;
+            width: fit-content;
+
+            span {
+              font-size: $d;
+            }
+
+            path {
+              color: $gray-400;
+            }
+          }
+        }
+      }
+    }
+
+    .product-content-container {
+      @include flex(column, nowrap, stretch, flex-start, 30px);
+      padding: 30px;
+
+      .caption {
+        @include no-select();
+        align-self: flex-end;
+        font-size: $m;
+        letter-spacing: 1px;
+      }
+
+      .action-wrap {
+        @include frr;
+        gap: 10px;
+      }
+
+      .btn {
+        align-self: center;
+        padding: 0px 8px;
+        height: 36px;
+        width: fit-content;
+
+        span {
+          font-size: $d;
+        }
+      }
+
+      .input-wrap {
+        @include flex(column, nowrap, stretch, flex-start, 30px);
+      }
+
+      .input-sub-wrap {
+        @include grid(300px, 30px, 30px);
+
+        @include rwd-max(1024px) {
+          @include grid(1fr, 30px, 30px);
+        }
+
+        &.not-edit {
+          @include flex(row, nowrap, space-between, space-between);
+        }
+
+        .MuiFormControl-root {
+          flex-grow: 1;
+        }
+      }
+
+      .size-wrap {
+        @include flex(column, nowrap, stretch, flex-start, 10px);
+
+        span {
+          font-size: $s;
+        }
+
+        .input-textarea {
+          background-color: $transparent;
+          color: $gray-400;
+        }
+      }
+
+      .description-wrap {
+        @include flex(column, nowrap, stretch, flex-start, 20px);
+
+        .add-description {
+          @include flex(row, nowrap, center, center, 10px);
+          align-self: flex-start;
+        }
+
+        path {
+          color: $gray-400 !important;
+        }
+
+        .MuiInputAdornment-root {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .product-item-wrap {
+      @include flex(column, nowrap, stretch, flex-start, 10px);
+
+      &.align-start {
+        .item-value {
+          align-self: flex-start;
+        }
+      }
+
+      .item-name {
+        color: $gold-500;
+        font-size: $d;
+      }
+
+      .item-value {
+        font-size: $s;
+        align-self: flex-end;
+        line-height: $m;
+      }
+
+      pre.item-value {
+        margin: 0 auto 0 0;
+        color: $gray-500;
+        line-height: $m;
+      }
+    }
+  }
+}

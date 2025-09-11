@@ -13,6 +13,7 @@ import Products from '../views/adminPanel/Products'
 import Users from '../views/adminPanel/Users'
 import MyAccount from '../views/adminPanel/MyAccount'
 import UserDetail from '../views/adminPanel/UserDetail'
+import ProductDetail from '../views/adminPanel/ProductDetail'
 
 import Orders from '../views/adminPanel/Orders'
 
@@ -43,7 +44,7 @@ export function isLoginAndActive() {
           return res.data.data
         }
 
-        return logoutApi().then(() => redirect('/'))
+        return false
       }
 
       throw redirect('/')
@@ -78,6 +79,11 @@ export const routeMap = [
           {
             path: 'products',
             element: <Products />,
+            loader: isLoginAndActive
+          },
+          {
+            path: 'product/:id',
+            element: <ProductDetail />,
             loader: isLoginAndActive
           },
           {

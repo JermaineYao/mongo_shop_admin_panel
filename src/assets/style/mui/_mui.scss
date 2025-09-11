@@ -7,8 +7,12 @@
 
 // input
 .MuiInput-root {
+  svg path {
+    color: $gray-500;
+  }
+
   .MuiInput-input {
-    color: $gold-500;
+    color: $gold-400;
   }
 
   &.MuiInput-underline {
@@ -150,9 +154,32 @@
   @include no-select();
   background-color: $transparent !important;
   color: $gold-500 !important;
-  // text-shadow:
-  //   0 0 4px $water-300,
-  //   0 0 4px $water-300,
-  //   0 0 4px $water-300;
   font-size: $n !important;
+}
+
+// select
+/* 整個下拉框 */
+.MuiMenu-paper {
+  background-color: $white-15 !important;
+  box-shadow: 2px 2px 5px 0 $black-20;
+  backdrop-filter: blur(5px);
+}
+
+/* 每個選項 */
+.MuiMenuItem-root {
+  color: $gray-500 !important;
+
+  &.Mui-selected {
+    @include no-select();
+    background-color: $transparent !important;
+    color: $gold-500 !important;
+    font-size: $n !important;
+  }
+}
+
+/* hover 效果 */
+.MuiMenuItem-root:hover {
+  background-color: $brand-primary-700 !important;
+  box-shadow: 2px 2px 5px 0 $black-20;
+  backdrop-filter: blur(5px);
 }

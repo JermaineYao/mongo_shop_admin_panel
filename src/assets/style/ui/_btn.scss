@@ -18,12 +18,20 @@
     transition: all 700ms ease;
   }
 
+  path {
+    transition: all 700ms ease;
+  }
+
   &:hover {
-    background-color: $brand-primary-500;
+    background-color: $black-20;
     transform: translate(2px, 2px);
     box-shadow: none;
 
     span {
+      color: $gold-500 !important;
+    }
+
+    path {
       color: $gold-500 !important;
     }
   }

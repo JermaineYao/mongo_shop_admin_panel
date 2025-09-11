@@ -2,16 +2,16 @@ import { useState } from 'react'
 // mui
 import { CircularProgress } from '@mui/material'
 // ui
-import InputLabelDynamic from '../ui/InputLabelDynamic'
+import InputLabelDynamic from '@comp/ui/InputLabelDynamic'
 // utils
-import { isValidEmail } from '../../utils/utils'
+import { isValidEmail } from '@/utils/utils'
 // hook
-import { useError } from '../../hook/useError'
+import { useError } from '@/hook/useError'
 // api
-import { forgotPwdApi } from '../../api/user'
+import { forgotPwdApi } from '@/api/user'
 // redux
 import { useDispatch } from 'react-redux'
-import { setMsg, toggleMsg } from '../../store/slice/msgSlice'
+import { setMsg, toggleMsg } from '@/store/slice/msgSlice'
 
 export default function ForgotPwd(props) {
   const { toSignIn } = props

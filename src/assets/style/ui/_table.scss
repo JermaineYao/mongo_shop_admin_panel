@@ -6,12 +6,13 @@ table {
 
   th {
     @include glass($black-20);
-    padding: 8px;
+    padding: 15px;
 
     span {
-      color: $gray-400;
       width: fit-content;
       white-space: nowrap;
+      font-weight: 900;
+      color: $gold-500;
     }
   }
 
@@ -32,6 +33,14 @@ table {
       text-align: center;
       white-space: nowrap;
       transition: all 500ms ease;
+
+      .product-name-wrap {
+        @include flex(column, nowrap, center, flex-start, 5px);
+
+        .name-sub {
+          color: $gray-500;
+        }
+      }
     }
 
     span {

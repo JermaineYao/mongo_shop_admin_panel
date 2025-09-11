@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+* {
+  font-family: 'Noto Serif TC', serif !important;
+}
+
 html,
 body,
 h1,
@@ -24,7 +28,7 @@ figure {
 }
 
 body {
-  font-family: 'Noto Serif TC', serif;
+  // font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
   background-color: $black;
   overflow: hidden;
 }
@@ -63,7 +67,7 @@ span {
   height: 100vh;
   height: 100dvh;
   max-width: 100vw;
-  padding: 30px;
+  padding: 20px;
   overflow: hidden;
 
   &.has-return-btn {
@@ -79,6 +83,10 @@ span {
 .extend {
   flex-grow: 1;
   padding: 40px 20px 0 20px;
+
+  @include rwd-max(1024px) {
+    padding: 20px;
+  }
 }
 
 .page-title {
@@ -136,23 +144,23 @@ body::-webkit-scrollbar {
   }
 
   &::-webkit-scrollbar-button {
-    background: transparent;
+    background: $transparent;
 
     border-radius: 4px;
   }
 
   &::-webkit-scrollbar-track-piece {
-    background: transparent;
+    background: $transparent;
   }
 
   &::-webkit-scrollbar-thumb {
     @include glass($black-20);
     border-radius: 4px;
-    background-color: $white-15;
+    background-color: $black-20;
   }
 
   &::-webkit-scrollbar-track {
-    box-shadow: transparent;
+    box-shadow: $transparent;
   }
 }
 
@@ -179,10 +187,17 @@ body::-webkit-scrollbar {
   }
 
   .delete {
+    @include fcc;
     position: absolute;
     top: 0px;
     right: -15px;
     cursor: pointer;
+    z-index: 50;
+
+    &.inside {
+      top: 5px;
+      right: 5px;
+    }
   }
 
   input {
@@ -228,4 +243,18 @@ span.alert-item,
     0 0 4px $water-300,
     0 0 4px $water-300,
     0 0 4px $water-300;
+}
+
+/*====== textarea ======*/
+textarea.input-textarea {
+  padding: 5px;
+  font-size: $s;
+  line-height: $m;
+  border: 1px solid $white-15;
+  transition: all 500ms ease;
+
+  &:focus {
+    border: 1px solid $gold-500;
+    outline: none;
+  }
 }

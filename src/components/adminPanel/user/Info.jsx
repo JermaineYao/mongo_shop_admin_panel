@@ -1,4 +1,4 @@
-import { useState, useReducer, useEffect } from 'react'
+import { useState } from 'react'
 // ui
 import LoadingCover from '@comp/ui/LoadingCover'
 // mui
@@ -121,7 +121,7 @@ export default function Info(props) {
   }
 
   return (
-    <section className="account-base-container account-wrap">
+    <section className="account-base-container">
       <article className="account-item">
         {/*----- photo -----*/}
         <div className="photo-container">
@@ -147,13 +147,14 @@ export default function Info(props) {
             </div>
           )}
 
-          {userInfo.photo.url && userInfo.role === 'user' && (
-            <div className="delete" onClick={deleteUserPhoto} aria-label="刪除頭像">
-              <CancelRoundedIcon
-                sx={{ color: 'rgba(18, 0, 59, 0.7);', fontSize: '30px' }}
-              />
-            </div>
-          )}
+          {(userInfo.photo.url && userInfo.role === 'user') ||
+            (isEditable && (
+              <div className="delete" onClick={deleteUserPhoto} aria-label="刪除頭像">
+                <CancelRoundedIcon
+                  sx={{ color: 'rgba(18, 0, 59, 0.7);', fontSize: '30px' }}
+                />
+              </div>
+            ))}
 
           <LoadingCover open={imgLoading} />
 
@@ -193,7 +194,7 @@ export default function Info(props) {
             checked={userInfo.active}
             onChange={toggleAccountActive}
             color="default"
-            disabled={userInfo.role === 'admin'}
+            disabled={!isEditable && userInfo.role === 'admin'}
           />
           <span
             className={userInfo.active ? 'account-active is-active' : 'account-active '}

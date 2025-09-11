@@ -21,8 +21,8 @@
 @forward './views/adminPanel/admin_panel';
 // UserDeial, MyAccount
 @forward './views/adminPanel/account';
-// Users
-@forward './views/adminPanel/users';
+// Product Detail
+@forward './views/adminPanel/product';
 
 /*====== components ======*/
 // logo
@@ -38,3 +38,5 @@
 
 // add admin account
 @forward './components/adminPanel/add_admin_user';
+// add product
+@forward './components/adminPanel/add_product';

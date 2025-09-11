@@ -52,7 +52,16 @@ export default function SignIn(props) {
 
     loginApi(query)
       .then((res) => {
-        if (res.status === 200) nav('/admin_panel')
+        if (res.status === 200) {
+          console.log(res)
+          const isActive = res.data.active
+
+          if (isActive) {
+            nav('/admin_panel/products')
+          } else {
+            nav('/admin_panel/my_account', { state: { name: '我的帳號' } })
+          }
+        }
       })
       .catch((err) => {
         setLoading(false)

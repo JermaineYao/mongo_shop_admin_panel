@@ -9,6 +9,8 @@ import { useError } from '@/hook/useError'
 import { queryAccountApi } from '@/api/user'
 // reducer
 import { initAccount, accountReducer } from '@/reducer/account'
+// icon
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft'
 // component
 import PageTitle from '@comp/adminPanel/PageTitle'
 import Info from '@comp/adminPanel/user/Info'
@@ -18,9 +20,6 @@ export default function UserDetail() {
   const title = '帳號資訊'
   const routerState = useLocation().state
   const userId = useParams().id
-  console.log(userId)
-
-  console.log(useLocation())
 
   const nav = useNavigate()
 
@@ -60,13 +59,13 @@ export default function UserDetail() {
   }
 
   // 更新 state
-  function updateState(type, value) {
-    if (type === 'clear') {
-      accountDispatch({ type })
+  function updateState(field, value) {
+    if (field === 'clear') {
+      accountDispatch({ type: 'clear' })
       return
     }
 
-    accountDispatch({ type, payload: value })
+    accountDispatch({ type: 'update', field, payload: value })
   }
 
   // 回帳號管理
@@ -80,7 +79,10 @@ export default function UserDetail() {
       <PageTitle title={title}></PageTitle>
 
       <div className="btn return" onClick={returnToUsers}>
-        <span>回帳號管理</span>
+        <KeyboardDoubleArrowLeftIcon
+          sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '30px' }}
+        />
+        <span>回商品管理</span>
       </div>
 
       <main id="account" className="extend loading-container scroll-wrap-y">

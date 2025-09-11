@@ -111,10 +111,16 @@
     }
 
     .nav-item {
+      outline: none;
+
       &:hover {
         span {
           color: $white;
         }
+      }
+
+      a {
+        text-decoration: none;
       }
     }
 

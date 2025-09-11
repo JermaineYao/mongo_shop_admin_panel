@@ -11,8 +11,8 @@ import { setUser, resetUser } from '../../store/slice/userSlice'
 // icon
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions'
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
-import StartIcon from '@mui/icons-material/Start'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay'
+import PlaylistRemoveIcon from '@mui/icons-material/PlaylistRemove'
 // component
 import Logo from '../Logo'
 
@@ -29,6 +29,8 @@ export default function NavBar() {
     const signal = controller.signal
 
     if (!user.userId) queryAccount({ signal })
+
+    if (!user.active) nav(myAccountPath, { state: { name: '我的帳號' } })
 
     return () => controller.abort()
   }, [])
@@ -76,7 +78,7 @@ export default function NavBar() {
   const navItems = [
     {
       name: '商品管理',
-      path: '/admin_panel'
+      path: '/admin_panel/products'
     },
     {
       name: '訂單管理',
@@ -133,7 +135,7 @@ export default function NavBar() {
             {navItems.map((v) => {
               return (
                 <div className="nav-item" key={v.name}>
-                  <NavLink to={v.path} state={v.name} end>
+                  <NavLink to={v.path} end>
                     <span>{v.name}</span>
                   </NavLink>
                 </div>
@@ -145,9 +147,11 @@ export default function NavBar() {
 
       <div id="toggle-nav" onClick={toggleNav}>
         {openNav ? (
-          <ArrowBackIcon sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '35px' }} />
+          <PlaylistRemoveIcon
+            sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '35px' }}
+          />
         ) : (
-          <StartIcon sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '35px' }} />
+          <PlaylistPlayIcon sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '35px' }} />
         )}
       </div>
     </div>

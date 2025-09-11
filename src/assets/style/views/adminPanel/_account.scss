@@ -5,8 +5,9 @@
   @include flex(column, nowrap, center, flex-start, 100px);
 
   .account-container {
-    @include flex(column, nowrap, stretch, flex-start, 50px);
-    width: 600px;
+    @include flex(column, nowrap, stretch, flex-start, 30px);
+    width: 100%;
+    max-width: 600px;
 
     .account-wrap {
       @include glass($black-20);
@@ -15,10 +16,11 @@
 
     @include rwd-max(1024px) {
       width: 100%;
+      max-width: 100%;
 
       .account-wrap {
         @include glass($black-20);
-        padding: 20px 30px;
+        padding: 20px;
       }
     }
   }
@@ -45,6 +47,7 @@
           font-size: $l;
           font-weight: 700;
           letter-spacing: 1px;
+          color: $gold-500;
         }
 
         .role {
@@ -126,7 +129,9 @@
       @include flex(row, nowrap, flex-end, flex-start, 10px);
 
       .title {
+        color: $gold-500;
         font-size: $d;
+        white-space: nowrap;
       }
     }
   }

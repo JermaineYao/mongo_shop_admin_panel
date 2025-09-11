@@ -19,7 +19,7 @@ export function usersReducer(state, action) {
       return { ...initUsers, ...payload }
 
     case 'search':
-      return { ...state, search: { ...state.search, ...payload.search } }
+      return { ...state, search: { ...state.search, ...payload } }
 
     case 'set-page':
       return {
@@ -28,7 +28,7 @@ export function usersReducer(state, action) {
       }
 
     case 'users':
-      return { ...state, users: payload.users }
+      return { ...state, users: payload }
 
     case 'update-user':
       return {
@@ -43,12 +43,6 @@ export function usersReducer(state, action) {
 
     case 'data-count':
       return { ...state, dataCount: payload }
-
-    case 'clear-users':
-      return { ...state, users: [] }
-
-    case 'clear-all':
-      return { users: [], search: { ...initUsers.search }, totalPages: 1, dataCount: 0 }
 
     default:
       return state

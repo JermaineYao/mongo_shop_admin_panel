@@ -69,6 +69,7 @@ export default function MyAccount() {
 
   // 更改密碼
   const pwdRule = '至少 8位元、至少包含一個大寫、小寫英文字母、數字、特殊字元'
+  const notTheSame = '密碼確認不一致'
   const [pwdLoading, setPwdLoading] = useState(false)
   const [editPwd, setEditPwd] = useState(false)
   const [pwd, pwdDispatch] = useReducer(pwdReducer, initPwd)
@@ -82,7 +83,6 @@ export default function MyAccount() {
       pwd.pwdErr.length === 0 &&
       pwd.confirmErr.length === 0
 
-    console.log('allChecked', allChecked)
     return allFilled && allChecked ? true : false
   }
 
@@ -95,62 +95,65 @@ export default function MyAccount() {
     setEditPwd(true)
   }
 
+  // 原密碼
   function pwdCurrentOnBlur(e) {
     const pwdCurrent = e.target.value.trim()
     const check = isValidPwd(pwdCurrent)
 
     if (!check) {
-      pwdDispatch({ type: 'err-current', payload: pwdRule })
+      pwdDispatch({ type: 'update', field: 'pwdCurrentErr', payload: pwdRule })
 
       return
     }
 
-    pwdDispatch({ type: 'err-current', payload: '' })
-    pwdDispatch({ type: 'current', payload: pwdCurrent })
+    pwdDispatch({ type: 'update', field: 'pwdCurrentErr', payload: '' })
+    pwdDispatch({ type: 'update', field: 'pwdCurrent', payload: pwdCurrent })
   }
 
+  // 新密碼
   function pwdOnBlur(e) {
     const newPwd = e.target.value.trim()
-    const check = isValidPwd(pwd)
+    const check = isValidPwd(newPwd)
 
     if (!check) {
-      pwdDispatch({ type: 'err-new', payload: pwdRule })
+      pwdDispatch({ type: 'update', field: 'pwdErr', payload: pwdRule })
 
       return
     }
 
-    if (pwd.confirm.length > 0 && newPwd !== pwd.confirm) {
-      pwdDispatch({ type: 'err-confirm', payload: '密碼確認不一致' })
+    if (pwd.confirmPwd.length > 0 && newPwd !== pwd.confirmPwd) {
+      pwdDispatch({ type: 'update', field: 'confirmErr', payload: notTheSame })
 
       return
     }
 
-    if (pwd.confirm.length > 0 && newPwd === pwd.confirm) {
-      pwdDispatch({ type: 'err-confirm', payload: '' })
+    if (pwd.confirmPwd.length > 0 && newPwd === pwd.confirmPwd) {
+      pwdDispatch({ type: 'update', field: 'confirmErr', payload: '' })
     }
 
-    pwdDispatch({ type: 'err-new', payload: '' })
-    pwdDispatch({ type: 'new', payload: newPwd })
+    pwdDispatch({ type: 'update', field: 'pwdErr', payload: '' })
+    pwdDispatch({ type: 'update', field: 'pwd', payload: newPwd })
   }
 
+  // 確認新密碼
   function confirmOnBlur(e) {
     const confirm = e.target.value.trim()
     const check = isValidPwd(confirm)
 
     if (!check) {
-      pwdDispatch({ type: 'err-confirm', payload: pwdRule })
+      pwdDispatch({ type: 'update', field: 'confirmErr', payload: pwdRule })
 
       return
     }
 
     if (confirm !== pwd.pwd) {
-      pwdDispatch({ type: 'err-confirm', payload: '密碼確認不一致' })
+      pwdDispatch({ type: 'update', field: 'confirmErr', payload: notTheSame })
 
       return
     }
 
-    pwdDispatch({ type: 'err-confirm', payload: '' })
-    pwdDispatch({ type: 'confirm', payload: confirm })
+    pwdDispatch({ type: 'update', field: 'confirmErr', payload: '' })
+    pwdDispatch({ type: 'update', field: 'confirmPwd', payload: confirm })
   }
 
   function changePwd() {
@@ -290,7 +293,7 @@ export default function MyAccount() {
               <article className="account-pwd-wrap">
                 <div className="account-pwd-item">
                   <span className="title">密碼</span>
-                  <span className="content">．．．．．．．．</span>
+                  <span className="item-content">．．．．．．．．</span>
                 </div>
               </article>
             )}

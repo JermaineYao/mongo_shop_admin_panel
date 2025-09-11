@@ -1,14 +1,18 @@
 @use '../../variables.scss' as *;
 @use '../../mixin.scss' as *;
 
-.add-admin-account {
+.add-product {
   @include modal($black-60);
 
-  .add-admin-account-container {
+  .add-product-container {
     @include flex(column, nowrap, stretch, flex-start, 40px);
     @include glass($modal-bg);
-    width: 600px;
-    padding: 20px 40px;
+    width: 900px;
+    padding: 30px;
+
+    @include rwd-max(768px) {
+      width: 700px;
+    }
 
     .caption {
       @include no-select();
@@ -19,7 +23,7 @@
 
     .action-wrap {
       @include frc;
-      gap: 20px;
+      gap: 10px;
     }
 
     .btn {
@@ -35,6 +39,27 @@
 
     .input-wrap {
       @include flex(column, nowrap, stretch, flex-start, 30px);
+    }
+
+    .input-sub-wrap {
+      @include flex(row, nowrap, center, flex-start, 30px);
+
+      .MuiFormControl-root {
+        flex-grow: 1;
+      }
+    }
+
+    .description-wrap {
+      @include flex(column, nowrap, stretch, flex-start, 10px);
+
+      .add-description {
+        @include flex(row, nowrap, center, center, 10px);
+        align-self: flex-start;
+
+        path {
+          color: $gray-400;
+        }
+      }
     }
   }
 }

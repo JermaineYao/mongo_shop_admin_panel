@@ -199,7 +199,7 @@ export default function Contact(props) {
         <article className="account-pwd-wrap">
           <div className="account-contact-item">
             <span className="title">手機號碼</span>
-            <span className="content">
+            <span className="item-content">
               {userInfo.phoneNumber && userInfo.phoneNumber?.length > 0
                 ? userInfo.phoneNumber
                 : '尚未填寫'}
@@ -208,7 +208,7 @@ export default function Contact(props) {
 
           <div className="account-contact-item">
             <span className="title">聯絡地址</span>
-            <span className="content">
+            <span className="item-content">
               {userInfo.address && userInfo.address?.length > 0
                 ? userInfo.address
                 : '尚未填寫'}
