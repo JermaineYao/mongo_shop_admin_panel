@@ -37,6 +37,7 @@ export default function MyAccount() {
     if (!user.userId) queryAccount({ signal })
 
     return () => controller.abort()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.userId])
 
   // 取得帳號資料

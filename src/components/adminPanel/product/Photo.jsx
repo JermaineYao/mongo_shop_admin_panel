@@ -92,7 +92,6 @@ export default function Photo(props) {
 
   // 上傳共用
   function setPhoto(e, isMain = true, index = null, subPhotoId = null) {
-    console.log(index, subPhotoId)
     const fileChosen = e.target
 
     if (fileChosen && fileChosen.files && fileChosen.files.length > 0) {

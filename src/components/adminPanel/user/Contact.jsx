@@ -59,12 +59,14 @@ export default function Contact(props) {
     }
   }
 
+  const phoneErrMsg = '手機號碼格式 09xx-xxx-xxx'
+
   function phoneNumberOnBlur(e) {
     const phoneNumber = e.target.value.trim()
     const check = isValidPhoneNumber(phoneNumber)
 
     if (!check) {
-      setPhoneErr('手機號碼格式 09xx-xxx-xxx')
+      setPhoneErr(phoneErrMsg)
       return
     }
 
@@ -82,7 +84,7 @@ export default function Contact(props) {
     const check = isValidPhoneNumber(phoneNumber)
 
     if (!check) {
-      setPhoneErr('手機號碼格式 09xx-xxx-xxx')
+      setPhoneErr(phoneErrMsg)
       return
     }
 

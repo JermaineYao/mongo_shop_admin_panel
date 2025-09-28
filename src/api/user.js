@@ -23,7 +23,7 @@ export const logoutApi = () => {
  * @param {string} email
  */
 export const forgotPwdApi = (query) => {
-  query.routeWithHash = true
+  // query.routeWithHash = true
   const url = `${baseUrl}/forgot_pwd_admin`
   return catchErr(http.post(url, { ...query }))
 }
