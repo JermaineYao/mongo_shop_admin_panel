@@ -6,7 +6,10 @@
 
   .add-product-container {
     @include flex(column, nowrap, stretch, flex-start, 40px);
-    @include glass($modal-bg);
+    background:
+      linear-gradient(170deg, rgba($root-bg-bottom, 0.6) 0%, rgba($root-bg-top, 0.5) 90%),
+      url('../image/texture.png') repeat;
+
     width: 900px;
     padding: 30px;
 
@@ -17,24 +20,13 @@
     .caption {
       @include no-select();
       align-self: flex-end;
-      font-size: $m;
+      font-size: $n;
       letter-spacing: 1px;
     }
 
     .action-wrap {
       @include frc;
       gap: 10px;
-    }
-
-    .btn {
-      align-self: center;
-      padding: 0px 8px;
-      height: 36px;
-      width: fit-content;
-
-      span {
-        font-size: $d;
-      }
     }
 
     .input-wrap {

@@ -86,7 +86,7 @@ export default function ProductDetail() {
 
       <div className="btn return" onClick={returnToProducts}>
         <KeyboardDoubleArrowLeftIcon
-          sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '30px' }}
+          sx={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '30px' }}
         />
         <span>回商品管理</span>
       </div>

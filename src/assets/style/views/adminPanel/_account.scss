@@ -69,6 +69,11 @@
           }
         }
       }
+
+      .account-email span {
+        color: $white;
+        letter-spacing: 1px;
+      }
     }
 
     .account-active-container {
@@ -103,15 +108,6 @@
       .action-wrap {
         @include frc;
         gap: 10px;
-      }
-    }
-
-    .btn {
-      padding: 0px 8px;
-      height: 36px;
-
-      span {
-        font-size: $d;
       }
     }
   }

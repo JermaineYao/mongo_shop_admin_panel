@@ -19,19 +19,16 @@
     }
 
     .order-field-wrap {
-      @include flex(row, nowrap, flex-end, flex-start, 10px);
-
-      span {
-        font-size: $s;
-      }
+      @include flex(row, nowrap, center, flex-start, 10px);
 
       .title {
         font-size: $d;
-        font-weight: 700;
+        color: $white;
       }
 
       .value {
         font-size: $s;
+        color: $white-60;
       }
     }
 
@@ -49,15 +46,18 @@
           }
 
           .order-status {
-            padding: 5px 10px;
+            padding: 2px 5px;
+            width: fit-content;
+            flex-shrink: 0;
 
             span {
               display: block;
-              // transform: translateY(1px) !important;
+              font-size: $xs;
+              white-space: nowrap;
             }
 
             &.cancelled {
-              background-color: $black;
+              @include glass($black-60);
 
               span {
                 color: $gray-500;
@@ -66,19 +66,19 @@
             }
 
             &.pending {
-              background-color: $pink-900;
+              @include glass($pink-100);
 
               span {
-                color: $gray-500;
+                color: $purple-900;
                 font-weight: 700;
               }
             }
 
             &.shipping {
-              background-color: $sky-500;
+              @include glass($sky-100);
 
               span {
-                color: $white;
+                color: $purple-900;
                 font-weight: 700;
               }
             }

@@ -6,7 +6,7 @@ table {
 
   th {
     @include glass($black-20);
-    padding: 15px;
+    padding: 10px;
 
     span {
       width: fit-content;
@@ -27,8 +27,6 @@ table {
   }
 
   tbody tr {
-    // cursor: pointer;
-
     td {
       text-align: center;
       white-space: nowrap;
@@ -68,7 +66,7 @@ table {
 
     &:hover {
       td {
-        background-color: $brand-primary-500;
+        background-color: rgba($black-60, 0.3);
 
         path,
         span {

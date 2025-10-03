@@ -5,10 +5,9 @@ export default function Logo(props) {
     <div className={large ? 'logo' : 'logo small'}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={large ? '473.096' : '173'}
+        width={large ? '474' : '150'}
         height={large ? '118.768' : '86'}
-        // viewBox="0 0 473.096 118.768"
-        viewBox={large ? '0 0 473.096 118.768' : '0 0 305 118.768'}
+        viewBox={large ? '0 0 474 119' : '0 0 305 118.768'}
       >
         <g id="组_1" data-name="组 1" transform="translate(-353.904 -399.232)">
           <path
@@ -22,10 +21,10 @@ export default function Logo(props) {
           <text
             id="Coloured_Glaze_Workshop"
             data-name="Coloured Glaze Workshop"
-            transform={large ? 'translate(657 515)' : 'translate(370 530)'}
+            transform={large ? 'translate(600 515)' : 'translate(380 535)'}
             fill="#bdc0ba"
-            fontSize={large ? '16' : '24'}
-            fontFamily="TimesNewRomanPSMT, Times New Roman"
+            fontSize={large ? '16' : '22'}
+            fontFamily="'Cormorant Garamond', 'Noto Serif TC', 'Zen Old Mincho', serif"
           >
             <tspan x="0" y="0">
               Coloured Glaze Workshop

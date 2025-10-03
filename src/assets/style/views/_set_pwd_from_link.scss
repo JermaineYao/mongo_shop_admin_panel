@@ -58,10 +58,19 @@
     margin-top: 200px;
     opacity: 1;
 
+    .input-label-container {
+      width: 350px;
+      align-self: center;
+    }
+
     .action-container {
       @include flex(column, nowrap, center, center, 20px);
       width: 100%;
       margin-top: 50px;
+
+      .btn {
+        width: 180px;
+      }
     }
   }
 }

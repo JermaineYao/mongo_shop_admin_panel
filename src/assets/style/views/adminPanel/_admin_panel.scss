@@ -18,19 +18,12 @@
     }
 
     .action-wrap {
-      @include flex(row, nowrap, flex-start, flex-end);
-    }
-
-    .btn {
-      width: fit-content;
-      padding: 0 10px;
-      flex-shrink: 0;
+      @include flex(row, nowrap, center, flex-end);
     }
 
     .content-container {
       @include flex(column, nowrap, stretch, center, 30px);
       flex-grow: 1;
-      // overflow: hidden;
 
       .search-container {
         @include flex(column, nowrap, stretch, flex-end, 20px);
@@ -44,7 +37,6 @@
       .content-list-container {
         @include flex(column, nowrap, stretch, flex-start, 20px);
         flex-grow: 1;
-        // overflow: hidden;
 
         .content-table-container {
           @include flex(column, nowrap, flex-start, flex-start);

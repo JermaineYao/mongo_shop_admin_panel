@@ -18,8 +18,6 @@ import { setMsg, toggleMsg } from '@/store/slice/msgSlice'
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft'
 // component
 import PageTitle from '@comp/adminPanel/PageTitle'
-import Info from '@comp/adminPanel/user/Info'
-import Contact from '@comp/adminPanel/user/Contact'
 
 export default function Order() {
   const dispatch = useDispatch()
@@ -65,6 +63,7 @@ export default function Order() {
     queryOrder({ signal })
 
     return () => controller.abort()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderNo])
 
   // 查詢該訂單
@@ -152,7 +151,7 @@ export default function Order() {
 
       <div className="btn return" onClick={returnToOrders}>
         <KeyboardDoubleArrowLeftIcon
-          sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '30px' }}
+          sx={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '30px' }}
         />
         <span>回訂單管理</span>
       </div>
@@ -183,17 +182,19 @@ export default function Order() {
 
               <div className="order-field-wrap">
                 <span className="title">更新時間</span>
-                <span>{order?.updatedAt ? twTime(order.updatedAt) : ''}</span>
+                <span className="value">
+                  {order?.updatedAt ? twTime(order.updatedAt) : ''}
+                </span>
               </div>
 
               <div className="order-field-wrap">
                 <span className="title">帳號</span>
-                <span>{order?.account ?? ''}</span>
+                <span className="value">{order?.account ?? ''}</span>
               </div>
 
               <div className="order-field-wrap">
                 <span className="title">信箱</span>
-                <span>{order?.email ?? ''}</span>
+                <span className="value">{order?.email ?? ''}</span>
               </div>
 
               <hr />

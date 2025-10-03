@@ -5,7 +5,7 @@
   @include glass($black-20, 15px);
   position: relative;
   flex-shrink: 0;
-  width: 260px;
+  width: 230px;
   height: 100vh;
   height: 100dvh;
   padding: 20px;
@@ -59,7 +59,7 @@
       }
 
       span {
-        font-size: $n;
+        font-size: $d;
       }
 
       .img {
@@ -103,10 +103,10 @@
   }
 
   nav {
-    @include flex(column, nowrap, stretch, flex-start, 20px);
+    @include flex(column, nowrap, stretch, flex-start, 10px);
 
     span {
-      font-size: $m;
+      font-size: $n;
       white-space: nowrap;
     }
 

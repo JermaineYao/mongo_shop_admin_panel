@@ -80,9 +80,9 @@ export default function UserDetail() {
 
       <div className="btn return" onClick={returnToUsers}>
         <KeyboardDoubleArrowLeftIcon
-          sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '30px' }}
+          sx={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '30px' }}
         />
-        <span>回商品管理</span>
+        <span>回帳號管理</span>
       </div>
 
       <main id="account" className="extend loading-container scroll-wrap-y">

@@ -5,16 +5,19 @@
   @include frc;
   @include glass($white-15);
   @include no-select();
-  height: 42px;
-  font-size: $n;
+  padding: 3px 10px;
+
   color: $white;
   transition: all 700ms ease;
   cursor: pointer;
 
+  @include rwd-min(1920px) {
+    padding: 5px 15px;
+  }
+
   span {
     white-space: nowrap;
     letter-spacing: 1px;
-    transform: translateY(-1px);
     transition: all 700ms ease;
   }
 

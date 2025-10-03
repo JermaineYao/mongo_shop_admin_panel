@@ -94,8 +94,6 @@
         .sub-photo-wrap {
           @include grid-fixed-width(200px, 20px, 20px);
           justify-items: start;
-          // @include frl;
-          // gap: 10px;
         }
 
         .photo-container {
@@ -107,15 +105,6 @@
           align-self: flex-start;
 
           .btn {
-            align-self: center;
-            padding: 0px 8px;
-            height: 36px;
-            width: fit-content;
-
-            span {
-              font-size: $d;
-            }
-
             path {
               color: $gray-400;
             }
@@ -138,17 +127,6 @@
       .action-wrap {
         @include frr;
         gap: 10px;
-      }
-
-      .btn {
-        align-self: center;
-        padding: 0px 8px;
-        height: 36px;
-        width: fit-content;
-
-        span {
-          font-size: $d;
-        }
       }
 
       .input-wrap {
