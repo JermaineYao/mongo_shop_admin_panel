@@ -1,20 +1,8 @@
 import axios from 'axios'
 import qs from 'qs'
 
-const baseURL = switchDevBaseUrl(import.meta.env.VITE_EXCUTION_MODE)
-
-function switchDevBaseUrl(devMode) {
-  switch (devMode) {
-    case 'DEV':
-      return null
-
-    case 'PROD':
-      return import.meta.env.VITE_PROD_URL
-  }
-}
-
 const axiosRequest = axios.create({
-  baseURL, // dev 不使用, prod 使用
+  baseURL: import.meta.env.VITE_API_BASE ?? '/api/v1', // dev 不使用, prod 使用
   headers: {
     // 改為 json 可以不用再指定 content-type 就可以傳送檔案 new FormData
     'Content-Type': 'application/json'
