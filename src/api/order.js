@@ -1,6 +1,6 @@
 import http from './axios'
 import { catchErr } from './catchError'
-const baseUrl = 'api/v1/order'
+const baseUrl = '/order'
 
 // 查詢所有商品
 export const queryAllOrdersApi = (query, singal) => {

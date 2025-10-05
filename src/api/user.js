@@ -1,6 +1,6 @@
 import http from './axios'
 import { catchErr } from './catchError'
-const baseUrl = 'api/v1/user'
+const baseUrl = '/user'
 
 // 登入
 /**
