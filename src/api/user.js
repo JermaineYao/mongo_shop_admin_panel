@@ -15,7 +15,7 @@ export const loginApi = (query) => {
 // 登出
 export const logoutApi = () => {
   const url = `${baseUrl}/sign_out_admin`
-  return catchErr(http.get(url))
+  return catchErr(http.post(url))
 }
 
 // 忘記密碼
