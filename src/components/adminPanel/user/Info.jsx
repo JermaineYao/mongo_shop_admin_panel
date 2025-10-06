@@ -156,7 +156,7 @@ export default function Info(props) {
               </div>
             ))}
 
-          <LoadingCover open={imgLoading} />
+          <LoadingCover open={imgLoading} isCircle="true" />
 
           <input
             id="user-photo-upload"
