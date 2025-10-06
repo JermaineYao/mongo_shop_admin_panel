@@ -48,11 +48,11 @@ export default function InputLabelDynamic(props) {
       <div className="icon_wrap" onClick={togglePwd}>
         {isShowPwd ? (
           <RemoveRedEyeIcon
-            sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '30px' }}
+            sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '22px' }}
           ></RemoveRedEyeIcon>
         ) : (
           <VisibilityOffIcon
-            sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '30px' }}
+            sx={{ color: 'rgba(182, 182, 182, 1)', fontSize: '22px' }}
           ></VisibilityOffIcon>
         )}
       </div>
