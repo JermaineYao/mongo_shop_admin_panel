@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 import LoadingCover from '@comp/ui/LoadingCover'
 // mui
 import TextField from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
 // utils
 import { isValidPwd } from '@/utils/utils'
 // hook
@@ -21,6 +22,9 @@ import { setUser, setUserInfo } from '@/store/slice/userSlice'
 import PageTitle from '@comp/adminPanel/PageTitle'
 import Info from '@comp/adminPanel/user/Info'
 import Contact from '@comp/adminPanel/user/Contact'
+// icon
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 
 export default function MyAccount() {
   const title = useLocation().state.name
@@ -94,6 +98,17 @@ export default function MyAccount() {
 
   function enableEditPwd() {
     setEditPwd(true)
+  }
+
+  // 是否顯示密碼
+  const [isShowPwd, setIsShowPwd] = useState({
+    pwdCurrent: false,
+    newPwd: false,
+    confirmPwd: false
+  })
+
+  const togglePwdVisible = (field) => {
+    setIsShowPwd((prev) => ({ ...prev, [field]: !prev[field] }))
   }
 
   // 原密碼
@@ -253,39 +268,90 @@ export default function MyAccount() {
               <article className="account-pwd-wrap">
                 <div className="account-pwd-item">
                   <TextField
-                    type="password"
+                    type={isShowPwd.pwdCurrent ? 'text' : 'password'}
                     key={pwd.pwdCurrent || ''}
                     defaultValue={pwd.pwdCurrent || ''}
                     label="原密碼"
                     variant="standard"
                     error={Boolean(pwd.pwdCurrentErr)}
                     helperText={pwd.pwdCurrentErr || ' '}
+                    slotProps={{
+                      input: {
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            {!isShowPwd.pwdCurrent ? (
+                              <RemoveRedEyeIcon
+                                onClick={() => togglePwdVisible('pwdCurrent')}
+                              ></RemoveRedEyeIcon>
+                            ) : (
+                              <VisibilityOffIcon
+                                onClick={() => togglePwdVisible('pwdCurrent')}
+                              ></VisibilityOffIcon>
+                            )}
+                          </InputAdornment>
+                        )
+                      }
+                    }}
                     onBlur={(e) => pwdCurrentOnBlur(e)}
                   />
                 </div>
 
                 <div className="account-pwd-item">
                   <TextField
-                    type="password"
+                    type={isShowPwd.newPwd ? 'text' : 'password'}
                     key={pwd.pwd || ''}
                     defaultValue={pwd.pwd || ''}
                     label="新密碼"
                     variant="standard"
                     error={Boolean(pwd.pwdErr)}
                     helperText={pwd.pwdErr || ' '}
+                    slotProps={{
+                      input: {
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            {!isShowPwd.newPwd ? (
+                              <RemoveRedEyeIcon
+                                onClick={() => togglePwdVisible('newPwd')}
+                              ></RemoveRedEyeIcon>
+                            ) : (
+                              <VisibilityOffIcon
+                                onClick={() => togglePwdVisible('newPwd')}
+                              ></VisibilityOffIcon>
+                            )}
+                          </InputAdornment>
+                        )
+                      }
+                    }}
                     onBlur={(e) => pwdOnBlur(e)}
                   />
                 </div>
 
                 <div className="account-pwd-item">
                   <TextField
-                    type="password"
+                    type={isShowPwd.confirmPwd ? 'text' : 'password'}
                     key={pwd.confirmPwd || ''}
                     defaultValue={pwd.confirmPwd || ''}
                     label="確認新密碼"
                     variant="standard"
                     error={Boolean(pwd.confirmErr)}
                     helperText={pwd.confirmErr || ' '}
+                    slotProps={{
+                      input: {
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            {!isShowPwd.confirmPwd ? (
+                              <RemoveRedEyeIcon
+                                onClick={() => togglePwdVisible('confirmPwd')}
+                              ></RemoveRedEyeIcon>
+                            ) : (
+                              <VisibilityOffIcon
+                                onClick={() => togglePwdVisible('confirmPwd')}
+                              ></VisibilityOffIcon>
+                            )}
+                          </InputAdornment>
+                        )
+                      }
+                    }}
                     onBlur={(e) => confirmOnBlur(e)}
                   />
                 </div>

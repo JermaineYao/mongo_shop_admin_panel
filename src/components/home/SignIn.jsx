@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { CircularProgress } from '@mui/material'
 // ui
 import InputLabelDynamic from '../ui/InputLabelDynamic'
+import InputPwdLabelDynamic from '../ui/InputPwdLabelDynamic'
 // hook
 import { useError } from '../../hook/useError'
 // api
@@ -82,14 +83,13 @@ export default function SignIn(props) {
         alertMsg={accountAlterMsg}
       ></InputLabelDynamic>
 
-      <InputLabelDynamic
+      <InputPwdLabelDynamic
         name="密碼"
-        type="password"
         value={pwd}
         onChange={setPwd}
         onBlur={pwdOnBlur}
         alertMsg={pwdAlterMsg}
-      ></InputLabelDynamic>
+      ></InputPwdLabelDynamic>
 
       <div className="action-container">
         <div className="btn" onClick={login}>

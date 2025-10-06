@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 // // mui
 import { CircularProgress } from '@mui/material'
 // // ui
-import InputLabelDynamic from '../components/ui/InputLabelDynamic'
+import InputPwdLabelDynamic from '../components/ui/InputPwdLabelDynamic'
 // utils
 import { isValidPwd } from '../utils/utils'
 // // hook
@@ -94,14 +94,13 @@ export default function SetPwdFromLink() {
 
         <div className="page-show active">
           <div id="set-pwd-wrap">
-            <InputLabelDynamic
+            <InputPwdLabelDynamic
               name="新密碼"
-              type="password"
               value={newPWD}
               onChange={setNewPwd}
               onBlur={newPwdBlur}
               alertMsg={alertMsg}
-            ></InputLabelDynamic>
+            ></InputPwdLabelDynamic>
 
             <div className="action-container">
               <div className="btn" onClick={resetPwd}>

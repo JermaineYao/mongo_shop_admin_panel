@@ -109,16 +109,6 @@
     0 0 4px $pink-300;
 }
 
-/* Label 在錯誤時 */
-.MuiInputLabel-root.Mui-error {
-  @include no-select();
-  color: $white !important;
-  text-shadow:
-    0 0 4px $pink-700,
-    0 0 4px $pink-700,
-    0 0 4px $pink-300;
-}
-
 /* 標準款（standard）底線在錯誤時 */
 .MuiInput-underline.Mui-error:after {
   @include no-select();
