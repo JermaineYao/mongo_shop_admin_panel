@@ -36,6 +36,11 @@
   }
 }
 
+// input icon
+.MuiInputAdornment-root {
+  cursor: pointer;
+}
+
 // alert
 .MuiAlert-root {
   @include no-select();
